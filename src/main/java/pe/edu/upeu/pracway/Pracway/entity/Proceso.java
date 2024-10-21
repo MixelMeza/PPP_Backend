@@ -11,22 +11,17 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "Empresa")
+@Table(name = "Proceso")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Empresa {
+public class Proceso {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "empresa_seq")
-	@SequenceGenerator(name = "empresa_seq", sequenceName = "empresa_sequence", allocationSize = 1)
-	private Long idempresa;
-
-	private String razonsocial;
-	private String direccion;
-	private String emaill;
-	private Long telefono;
-	private String sectorr;
-	private Long aniovinculacion;
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sq_proceso")
+	@SequenceGenerator(name = "sq_proceso", sequenceName = "sq_proceso", allocationSize = 1)
+	private Long id;
+	private String nombre;
+	private String tipo;
 	private String estado;
 }
