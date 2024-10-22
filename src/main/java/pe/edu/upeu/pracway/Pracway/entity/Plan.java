@@ -18,7 +18,7 @@ import lombok.Setter;
 @Setter
 @Getter
 @Entity
-@Table(name="planes")
+@Table(name="plan")
 public class Plan {
 	
 		@Id

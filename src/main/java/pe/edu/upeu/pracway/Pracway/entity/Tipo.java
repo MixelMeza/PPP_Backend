@@ -16,7 +16,7 @@ import lombok.Setter;
 @Setter
 @Getter
 @Entity
-@Table(name="tipos")
+@Table(name="tipo")
 public class Tipo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="sq_tipo")

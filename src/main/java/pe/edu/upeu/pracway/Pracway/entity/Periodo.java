@@ -29,4 +29,6 @@ public class Periodo {
     private LocalDate fecha_fin;
     private LocalTime hora_inicio;
     private LocalTime hora_fin;
+    private char estado;
+    
 }

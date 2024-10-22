@@ -21,12 +21,12 @@ public class PeriodoDaoImpl implements PeriodoDao {
 
     @Override
     public void create(Periodo p) {
-        periodoRepository.insertarPeriodo(p.getFecha_inicio(), p.getFecha_fin(), p.getHora_inicio(), p.getHora_fin());
+        periodoRepository.insertarPeriodo(p.getFecha_inicio(), p.getFecha_fin(), p.getHora_inicio(), p.getHora_fin(),p.getEstado());
     }
 
     @Override
     public void update(Periodo p) {
-        periodoRepository.actualizarPeriodo(p.getId(), p.getFecha_inicio(), p.getFecha_fin(), p.getHora_inicio(), p.getHora_fin());
+        periodoRepository.actualizarPeriodo(p.getId(), p.getFecha_inicio(), p.getFecha_fin(), p.getHora_inicio(), p.getHora_fin(),p.getEstado());
     }
 
     @Override
