@@ -12,10 +12,10 @@ import pe.edu.upeu.pracway.Pracway.entity.Proceso;
 public interface ProcesoRepository extends JpaRepository<Proceso, Long>{
 
     @Procedure(procedureName = "sp_insertar_proceso")
-    void insertarProceso(String p_nombre, String p_tipo, String p_estado);
+    void insertarProceso(String p_nombre, String p_tipo, char p_estado);
 
     @Procedure(procedureName = "sp_editar_proceso")
-    void actualizarProceso(Long p_id, String p_nombre, String p_tipo, String p_estado);
+    void actualizarProceso(Long p_id, String p_nombre, String p_tipo, char p_estado);
 
     @Procedure(procedureName = "sp_eliminar_proceso")
     void eliminarProceso(Long p_id);
