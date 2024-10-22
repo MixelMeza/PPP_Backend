@@ -1,4 +1,4 @@
-package pe.edu.upeu.carrera.controller;
+package pe.edu.upeu.pracway.Pracway.controller;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -9,8 +9,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import jakarta.validation.Valid;
-import pe.edu.upeu.carrera.entity.Carrera;
-import pe.edu.upeu.carrera.service.CarreraService;
+import pe.edu.upeu.pracway.Pracway.entity.Carrera;
+import pe.edu.upeu.pracway.Pracway.service.CarreraService;
+
+
 
 @RestController
 @RequestMapping("/api/carreras")

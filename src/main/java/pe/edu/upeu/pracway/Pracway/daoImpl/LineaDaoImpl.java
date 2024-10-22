@@ -1,10 +1,11 @@
-package pe.edu.upeu.linea.daoImpl;
+package pe.edu.upeu.pracway.Pracway.daoImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import pe.edu.upeu.linea.dao.LineaDao;
-import pe.edu.upeu.linea.entity.Linea;
-import pe.edu.upeu.linea.repository.LineaRepository;
+
+import pe.edu.upeu.pracway.Pracway.dao.LineaDao;
+import pe.edu.upeu.pracway.Pracway.entity.Linea;
+import pe.edu.upeu.pracway.Pracway.repository.LineaRepository;
 
 import java.util.List;
 import java.util.Optional;

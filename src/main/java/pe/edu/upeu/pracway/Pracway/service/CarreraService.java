@@ -1,10 +1,10 @@
-package pe.edu.upeu.carrera.service;
+package pe.edu.upeu.pracway.Pracway.service;
 
 
 import java.util.List;
 import java.util.Optional;
 
-import pe.edu.upeu.carrera.entity.Carrera;
+import pe.edu.upeu.pracway.Pracway.entity.Carrera;
 
 public interface CarreraService {
 	void create(Carrera c);

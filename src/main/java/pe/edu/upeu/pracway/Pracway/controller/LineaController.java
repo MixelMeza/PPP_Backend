@@ -1,4 +1,4 @@
-package pe.edu.upeu.linea.controller;
+package pe.edu.upeu.pracway.Pracway.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -6,8 +6,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import jakarta.validation.Valid;
-import pe.edu.upeu.linea.entity.Linea;
-import pe.edu.upeu.linea.service.LineaService;
+import pe.edu.upeu.pracway.Pracway.entity.Linea;
+import pe.edu.upeu.pracway.Pracway.service.LineaService;
 
 import java.util.List;
 import java.util.NoSuchElementException;

@@ -1,4 +1,4 @@
-package pe.edu.upeu.linea.entity;
+package pe.edu.upeu.pracway.Pracway.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

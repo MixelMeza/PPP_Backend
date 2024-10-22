@@ -1,9 +1,11 @@
-package pe.edu.upeu.carrera.respository;
+package pe.edu.upeu.pracway.Pracway.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.query.Procedure;
 
-import pe.edu.upeu.carrera.entity.Carrera;
+import pe.edu.upeu.pracway.Pracway.entity.Carrera;
+
+
 
 public interface CarreraRepository extends JpaRepository<Carrera, Long> {
 	

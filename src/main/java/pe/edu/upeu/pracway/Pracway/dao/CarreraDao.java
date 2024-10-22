@@ -1,9 +1,11 @@
-package pe.edu.upeu.carrera.dao;
+package pe.edu.upeu.pracway.Pracway.dao;
 
 import java.util.List;
 import java.util.Optional;
 
-import pe.edu.upeu.carrera.entity.Carrera;
+import pe.edu.upeu.pracway.Pracway.entity.Carrera;
+
+
 
 public interface CarreraDao {
 	void create(Carrera c);

@@ -1,4 +1,4 @@
-package pe.edu.upeu.linea.serviceImpl;
+package pe.edu.upeu.pracway.Pracway.serviceImpl;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,9 +6,11 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import pe.edu.upeu.linea.dao.LineaDao;
-import pe.edu.upeu.linea.entity.Linea;
-import pe.edu.upeu.linea.service.LineaService;
+import pe.edu.upeu.pracway.Pracway.dao.LineaDao;
+import pe.edu.upeu.pracway.Pracway.entity.Linea;
+import pe.edu.upeu.pracway.Pracway.service.LineaService;
+
+
 @Service
 public class LineaServiceImpl implements LineaService {
 

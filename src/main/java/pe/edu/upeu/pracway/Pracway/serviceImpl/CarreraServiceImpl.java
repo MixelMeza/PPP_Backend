@@ -1,4 +1,4 @@
-package pe.edu.upeu.carrera.serviceImpl;
+package pe.edu.upeu.pracway.Pracway.serviceImpl;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,9 +6,11 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import pe.edu.upeu.carrera.dao.CarreraDao;
-import pe.edu.upeu.carrera.entity.Carrera;
-import pe.edu.upeu.carrera.service.CarreraService;
+import pe.edu.upeu.pracway.Pracway.dao.CarreraDao;
+import pe.edu.upeu.pracway.Pracway.entity.Carrera;
+import pe.edu.upeu.pracway.Pracway.service.CarreraService;
+
+
 @Service
 public class CarreraServiceImpl implements CarreraService {
 	

@@ -1,9 +1,11 @@
-package pe.edu.upeu.linea.dao;
+package pe.edu.upeu.pracway.Pracway.dao;
 
-import pe.edu.upeu.linea.entity.Linea;
+
 
 import java.util.List;
 import java.util.Optional;
+
+import pe.edu.upeu.pracway.Pracway.entity.Linea;
 
 public interface LineaDao {
     void create(Linea l);

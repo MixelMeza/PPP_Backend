@@ -1,9 +1,11 @@
-package pe.edu.upeu.linea.service;
+package pe.edu.upeu.pracway.Pracway.service;
 
 import java.util.List;
 import java.util.Optional;
 
-import pe.edu.upeu.linea.entity.Linea;
+import pe.edu.upeu.pracway.Pracway.entity.Linea;
+
+
 
 public interface LineaService {
 	void create(Linea l);
