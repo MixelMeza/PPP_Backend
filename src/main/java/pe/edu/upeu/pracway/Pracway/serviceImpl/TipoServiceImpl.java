@@ -2,31 +2,28 @@ package pe.edu.upeu.pracway.Pracway.serviceImpl;
 
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import pe.edu.upeu.pracway.Pracway.dao.PlanDao;
-import pe.edu.upeu.pracway.Pracway.entity.Plan;
-import pe.edu.upeu.pracway.Pracway.service.PlanService;
+import pe.edu.upeu.pracway.Pracway.dao.TipoDao;
+import pe.edu.upeu.pracway.Pracway.entity.Tipo;
+import pe.edu.upeu.pracway.Pracway.service.TipoService;
 
 
 @Service
-public class PlanServiceImpl implements PlanService{
+public class TipoServiceImpl implements TipoService {
 	@Autowired
-	private PlanDao dao;
-
-	
+	private TipoDao dao;
 	@Override
-	public void create(Plan p) {
+	public void create(Tipo t) {
 		// TODO Auto-generated method stub
-		 dao.create(p);
+		 dao.create(t);
 	}
 
 	@Override
-	public void update(Plan p) {
+	public void update(Tipo t) {
 		// TODO Auto-generated method stub
-		 dao.update(p);
+		 dao.update(t);
 	}
 
 	@Override
@@ -36,13 +33,13 @@ public class PlanServiceImpl implements PlanService{
 	}
 
 	@Override
-	public Optional<Plan> read(Long id) {
+	public Optional<Tipo> read(Long id) {
 		// TODO Auto-generated method stub
 		return dao.read(id);
 	}
 
 	@Override
-	public List<Plan> readAll() {
+	public List<Tipo> readAll() {
 		// TODO Auto-generated method stub
 		return dao.readAll();
 	}

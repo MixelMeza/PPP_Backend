@@ -1,6 +1,5 @@
 package pe.edu.upeu.pracway.Pracway.controller;
 
-
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -18,25 +17,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.validation.Valid;
-import pe.edu.upeu.pracway.Pracway.entity.Plan;
-import pe.edu.upeu.pracway.Pracway.service.PlanService;
+import pe.edu.upeu.pracway.Pracway.entity.Persona;
+import pe.edu.upeu.pracway.Pracway.service.PersonaService;
 
 
 
 @RestController
-@RequestMapping("/api/planes")
-public class PlanController {
+@RequestMapping("/api/personas")
+public class PersonaController {
 	@Autowired
-	private PlanService service;
+	private PersonaService personaService;
 	
 	@GetMapping
-	public ResponseEntity<List<Plan>> readAll(){
+	public ResponseEntity<List<Persona>> readAll(){
 		try {
-			List<Plan> Planes = service.readAll();
-			if(Planes.isEmpty()) {
+			List<Persona> personas = personaService.readAll();
+			if(personas.isEmpty()) {
 				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 			}
-			return new ResponseEntity<>(Planes, HttpStatus.OK);
+			return new ResponseEntity<>(personas, HttpStatus.OK);
 		} catch (Exception e) {
 			// TODO: handle exception
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -44,9 +43,9 @@ public class PlanController {
 		
 	}
 	@PostMapping
-	public ResponseEntity<Plan> crearProceso(@Valid @RequestBody Plan pla){
+	public ResponseEntity<Persona> crear(@Valid @RequestBody Persona per){
 		try {
-			service.create(pla);
+			personaService.create(per);
 			return new ResponseEntity<>(HttpStatus.CREATED);
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -55,9 +54,9 @@ public class PlanController {
 		
 	}
 	@GetMapping("/{id}")
-	public ResponseEntity<Plan> getPlanId(@PathVariable("id") Long id){
+	public ResponseEntity<Persona> getPersonaId(@PathVariable("id") Long id){
 		try {
-			Plan p = service.read(id).get();
+			Persona p = personaService.read(id).get();
 			return new ResponseEntity<>(p, HttpStatus.CREATED);
 		} catch (NoSuchElementException e) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -68,9 +67,9 @@ public class PlanController {
 		
 	}
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Plan> delPlan(@PathVariable("id") Long id){
+	public ResponseEntity<Persona> delPersona(@PathVariable("id") Long id){
 		try {
-			service.delete(id);
+			personaService.delete(id);
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -79,16 +78,15 @@ public class PlanController {
 		
 	}
 	@PutMapping("/{id}")
-	public ResponseEntity<?> updatePlan(@PathVariable("id") Long id, @Valid @RequestBody Plan pla){
+	public ResponseEntity<?> updatePersona(@PathVariable("id") Long id, @Valid @RequestBody Persona per){
 
-			Optional<Plan> p = service.read(id);
+			Optional<Persona> p = personaService.read(id);
 			if(p.isEmpty()) {
-				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-			}else {
-				 service.update(pla);
-		            return new ResponseEntity<>(HttpStatus.OK);
-				
-			}		
+				return new ResponseEntity<>(HttpStatus.NO_CONTENT);	 
+		    } else {
+		    	personaService.update(per);
+		    	return new ResponseEntity<>( HttpStatus.OK);
+		    }
 		
 	}
 }

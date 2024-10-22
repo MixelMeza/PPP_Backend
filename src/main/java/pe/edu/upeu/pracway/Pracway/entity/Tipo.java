@@ -1,8 +1,4 @@
 package pe.edu.upeu.pracway.Pracway.entity;
-
-
-
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,18 +9,19 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
 @Getter
 @Entity
-@Table(name="planes")
-public class Plan {
-	
-		@Id
-		@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="sq_plan")
-		@SequenceGenerator(name = "sq_plan", sequenceName = "sq_plan", allocationSize = 1)
-		private Long id;
-		private String plan;
-		private char estado;
+@Table(name="tipos")
+public class Tipo {
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="sq_tipo")
+	@SequenceGenerator(name = "sq_tipo", sequenceName = "sq_tipo", allocationSize = 1)
+	private Long id;
+	private String nombre;
+	private char estado;
 }

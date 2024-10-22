@@ -1,11 +1,13 @@
-package pe.edu.upeu.plan.daoImpl;
+package pe.edu.upeu.pracway.Pracway.daoImpl;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import pe.edu.upeu.plan.dao.PlanDao;
-import pe.edu.upeu.plan.entity.Plan;
-import pe.edu.upeu.plan.repository.PlanRepository;
+
+
+import pe.edu.upeu.pracway.Pracway.dao.PlanDao;
+import pe.edu.upeu.pracway.Pracway.entity.Plan;
+import pe.edu.upeu.pracway.Pracway.repository.PlanRepository;
 
 
 

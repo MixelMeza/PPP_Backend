@@ -6,27 +6,27 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import pe.edu.upeu.pracway.Pracway.dao.PlanDao;
-import pe.edu.upeu.pracway.Pracway.entity.Plan;
-import pe.edu.upeu.pracway.Pracway.service.PlanService;
+import pe.edu.upeu.pracway.Pracway.dao.AccesosDao;
+import pe.edu.upeu.pracway.Pracway.entity.Accesos;
+import pe.edu.upeu.pracway.Pracway.service.AccesosService;
+
 
 
 @Service
-public class PlanServiceImpl implements PlanService{
+public class AccesosServiceImpl implements AccesosService{
 	@Autowired
-	private PlanDao dao;
-
+	private AccesosDao dao;
 	
 	@Override
-	public void create(Plan p) {
+	public void create(Accesos a) {
 		// TODO Auto-generated method stub
-		 dao.create(p);
+		dao.create(a);
 	}
 
 	@Override
-	public void update(Plan p) {
+	public void update(Accesos a) {
 		// TODO Auto-generated method stub
-		 dao.update(p);
+		dao.update(a);
 	}
 
 	@Override
@@ -36,13 +36,13 @@ public class PlanServiceImpl implements PlanService{
 	}
 
 	@Override
-	public Optional<Plan> read(Long id) {
+	public Optional<Accesos> read(Long id) {
 		// TODO Auto-generated method stub
 		return dao.read(id);
 	}
 
 	@Override
-	public List<Plan> readAll() {
+	public List<Accesos> readAll() {
 		// TODO Auto-generated method stub
 		return dao.readAll();
 	}

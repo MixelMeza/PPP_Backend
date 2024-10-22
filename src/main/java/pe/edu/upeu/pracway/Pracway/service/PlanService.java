@@ -1,9 +1,10 @@
-package pe.edu.upeu.plan.service;
+package pe.edu.upeu.pracway.Pracway.service;
 
 import java.util.List;
 import java.util.Optional;
 
-import pe.edu.upeu.plan.entity.Plan;
+import pe.edu.upeu.pracway.Pracway.entity.Plan;
+
 
 
 public interface PlanService {
