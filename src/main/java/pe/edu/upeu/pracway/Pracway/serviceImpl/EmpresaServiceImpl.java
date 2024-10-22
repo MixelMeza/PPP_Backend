@@ -10,6 +10,7 @@ import pe.edu.upeu.pracway.Pracway.dao.EmpresaDao;
 import pe.edu.upeu.pracway.Pracway.entity.Empresa;
 import pe.edu.upeu.pracway.Pracway.service.EmpresaService;
 
+
 @Service
 public class EmpresaServiceImpl implements EmpresaService {
 

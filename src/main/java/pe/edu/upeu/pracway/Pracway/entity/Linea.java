@@ -15,26 +15,29 @@ import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Entity
-@Table(name = "Requisito")
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Requisito {
+@Setter
+@Getter
+@Entity
+@Data
+@Table(name = "Linea")
+public class Linea {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sq_requisito")
-	@SequenceGenerator(name = "sq_requisito", sequenceName = "sq_requisito", allocationSize = 1)
-	private Long id;
-	private String n_orden;
-	private String nombre;
-	private String tipo;
-	private char estado;
-	
-	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy = "requisito")
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sq_linea")
+	@SequenceGenerator(name = "sq_linea", sequenceName = "sq_linea", allocationSize = 1)
+    private Long id;
+    private String nombre;
+    private char estado;
+    
+    
+    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy = "linea")
 	@JsonIgnore
 	private Set<Proceso_Requisito> proceso_requisito;
-
 }
+

@@ -7,6 +7,7 @@ import java.util.Optional;
 import pe.edu.upeu.pracway.Pracway.entity.Empresa;
 
 
+
 public interface EmpresaService {
 	void create(Empresa e);
 	void update(Empresa e);
