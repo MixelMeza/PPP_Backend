@@ -1,6 +1,7 @@
 package pe.edu.upeu.pracway.Pracway.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -13,7 +14,8 @@ import pe.edu.upeu.pracway.Pracway.entity.Usuario;
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
     
-    
+	 Optional<Usuario> findByUsuario(String usuario);
+	
     @Procedure(procedureName = "asignarRolAUsuario")
     void asignarRolAUsuario(@Param("p_usuario_id") Long idUsuario, @Param("p_rol_id") Long idRol);
 

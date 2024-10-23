@@ -26,15 +26,19 @@ public class UsuarioServiceImpl implements UsuarioService {
     @Override
     public Usuario create(Usuario usuario) {
         try {
+            // Verifica si ya existe un usuario con el mismo nombre de usuario
+            Optional<Usuario> existingUsuario = usuarioDao.findByUsuario(usuario.getUsuario());
+            if (existingUsuario.isPresent()) {
+                throw new RuntimeException("El nombre de usuario ya existe.");
+            }
 
             if (usuario.getPersona() != null && usuario.getPersona().getId() != null) {
                 Persona persona = personaRepository.findById(usuario.getPersona().getId())
                         .orElseThrow(() -> new RuntimeException("Persona no encontrada"));
-
-  
                 usuario.setPersona(persona);
             }
 
+            // Guardar el nuevo usuario
             return usuarioDao.create(usuario);
         } catch (Exception e) {
             throw new RuntimeException("Error al crear el usuario.", e);
@@ -81,5 +85,11 @@ public class UsuarioServiceImpl implements UsuarioService {
     public void eliminarTodosLosRolesDeUsuario(Long idUsuario) {
         usuarioDao.eliminarTodosLosRolesDeUsuario(idUsuario);
     }
+
+	@Override
+	public Optional<Usuario> findByUsuario(String usuario) {
+		// TODO Auto-generated method stub
+		return usuarioDao.findByUsuario(usuario);
+	}
 
 }

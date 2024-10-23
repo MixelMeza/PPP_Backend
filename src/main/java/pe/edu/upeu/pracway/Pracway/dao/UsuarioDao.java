@@ -11,7 +11,8 @@ public interface UsuarioDao {
     Usuario update(Usuario usuario);      
     void delete(Long id);
     Optional<Usuario> read(Long id);  
-    List<Usuario> readAll();        
+    List<Usuario> readAll();
+    Optional<Usuario> findByUsuario(String usuario);
     
     void asignarRolAUsuario(Long idUsuario, Long idRol);
     void eliminarRolDeUsuario(Long idUsuario, Long idRol);

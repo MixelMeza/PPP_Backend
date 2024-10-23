@@ -63,5 +63,11 @@ public class UsuarioDaoImpl implements UsuarioDao {
         usuarioRepository.eliminarTodosLosRolesDeUsuario(idUsuario);
     }
 
+	@Override
+	public Optional<Usuario> findByUsuario(String usuario) {
+		// TODO Auto-generated method stub
+		return usuarioRepository.findByUsuario(usuario);
+	}
+
 	
 }
