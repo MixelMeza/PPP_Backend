@@ -36,8 +36,5 @@ public class Linea {
     private char estado;
     
     
-    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy = "linea")
-	@JsonIgnore
-	private Set<Proceso_Requisito> proceso_requisito;
 }
 

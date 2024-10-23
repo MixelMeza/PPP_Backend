@@ -33,8 +33,6 @@ public class Proceso_Requisito {
 	@JoinColumn(name="proceso_id", nullable = false)
 	private Proceso proceso;
 	
-	@ManyToOne
-	@JoinColumn(name="linea_id", nullable = false)
-	private Linea linea;
+
 	
 }
