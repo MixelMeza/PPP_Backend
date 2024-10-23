@@ -11,17 +11,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "Solictud")
+@Table(name = "Detalle_PPP")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Solicitud {
+public class Detalle_PPP {
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sq_solicitud")
-	@SequenceGenerator(name = "sq_solicitud", sequenceName = "sq_solicitud", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sq_detalle_ppp")
+	@SequenceGenerator(name = "sq_detalle_ppp", sequenceName = "sq_detalle_ppp", allocationSize = 1)
 	private Long id;
-	private String url;
-	private String motivo;
-	private String fecha;
 	private char estado;
 }

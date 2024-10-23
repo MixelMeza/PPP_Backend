@@ -8,8 +8,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,7 +22,6 @@ public class Evaluacion {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sq_evaluacion")
 	@SequenceGenerator(name = "sq_evaluacion", sequenceName = "sq_evaluacion", allocationSize = 1)
 	private Long id;
-	@Temporal(TemporalType.TIMESTAMP)
 	private Date fecha;
 	private String link;
 	private double nota;

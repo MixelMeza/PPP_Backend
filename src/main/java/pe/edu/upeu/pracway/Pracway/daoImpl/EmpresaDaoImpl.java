@@ -2,8 +2,6 @@ package pe.edu.upeu.pracway.Pracway.daoImpl;
 
 import java.util.List;
 
-
-
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +10,6 @@ import org.springframework.stereotype.Component;
 import pe.edu.upeu.pracway.Pracway.dao.EmpresaDao;
 import pe.edu.upeu.pracway.Pracway.entity.Empresa;
 import pe.edu.upeu.pracway.Pracway.repository.EmpresaRepository;
-
-
 
 @Component
 public class EmpresaDaoImpl implements EmpresaDao {

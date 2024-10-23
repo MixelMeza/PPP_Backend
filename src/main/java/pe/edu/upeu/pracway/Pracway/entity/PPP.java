@@ -21,7 +21,7 @@ public class PPP {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sq_ppp")
 	@SequenceGenerator(name = "sq_ppp", sequenceName = "sq_ppp", allocationSize = 1)
 	private Long id;
-	private int horas;
+	private Long horas;
 	private double promedio;
 	private char estado;
 }

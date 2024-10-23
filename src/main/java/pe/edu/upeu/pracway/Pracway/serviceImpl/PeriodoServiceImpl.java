@@ -12,9 +12,6 @@ import pe.edu.upeu.pracway.Pracway.entity.Periodo;
 import pe.edu.upeu.pracway.Pracway.service.PeriodoService;
 
 
-
-
-
 @Service
 public class PeriodoServiceImpl implements PeriodoService {
 

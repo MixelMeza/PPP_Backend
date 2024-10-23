@@ -1,7 +1,6 @@
 package pe.edu.upeu.pracway.Pracway.controller;
 
 import java.util.List;
-
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
@@ -20,7 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 import jakarta.validation.Valid;
 import pe.edu.upeu.pracway.Pracway.entity.Empresa;
 import pe.edu.upeu.pracway.Pracway.service.EmpresaService;
-
 
 
 @RestController
