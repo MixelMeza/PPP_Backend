@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
 import pe.edu.upeu.pracway.Pracway.dao.RolDao;
 import pe.edu.upeu.pracway.Pracway.entity.Rol;
 import pe.edu.upeu.pracway.Pracway.repository.RolRepository;
-@Component
 
+@Component
 public class RolDaoImpl implements RolDao{
 	@Autowired
 	private RolRepository rolRepository;

@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -36,4 +37,10 @@ public class Persona {
 	private String dni;
 	@Column(name="estado", length = 1)
 	private char estado;
+	
+	@OneToOne(mappedBy = "persona")
+    private Usuario usuario;
+	
+	
+	
 }
