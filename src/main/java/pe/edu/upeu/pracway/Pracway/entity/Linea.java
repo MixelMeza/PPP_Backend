@@ -2,6 +2,7 @@ package pe.edu.upeu.pracway.Pracway.entity;
 
 import java.util.Set;
 
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
