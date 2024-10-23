@@ -7,11 +7,6 @@ import org.springframework.stereotype.Repository;
 
 import pe.edu.upeu.pracway.Pracway.entity.Empresa;
 
-
-
-
-
-
 @Repository
 public interface EmpresaRepository extends JpaRepository<Empresa, Long>{
 
