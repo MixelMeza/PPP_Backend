@@ -2,6 +2,7 @@ package pe.edu.upeu.pracway.Pracway.entity;
 
 import java.util.Set;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -26,17 +27,17 @@ import lombok.Setter;
 @Table(name="usuario")
 public class Usuario {
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="sq_tipo")
-	@SequenceGenerator(name = "sq_tipo", sequenceName = "sq_tipo", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="sq_usuario")
+	@SequenceGenerator(name = "sq_usuario", sequenceName = "sq_usuario", allocationSize = 1)
 	private Long id;
 
     private String usuario;
 
-    private String contrasena;
+    private String contrasenia;
 
     private String icono;
    		
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "persona_id", referencedColumnName = "id")
     private Persona persona;
 

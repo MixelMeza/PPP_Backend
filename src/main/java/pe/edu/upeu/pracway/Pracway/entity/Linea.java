@@ -35,6 +35,6 @@ public class Linea {
     private String nombre;
     private char estado;
     
-
+    
 }
 
