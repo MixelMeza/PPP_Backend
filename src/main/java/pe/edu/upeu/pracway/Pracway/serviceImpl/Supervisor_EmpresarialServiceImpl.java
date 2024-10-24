@@ -12,8 +12,10 @@ import pe.edu.upeu.pracway.Pracway.service.Supervisor_EmpresarialService;
 
 @Service
 public class Supervisor_EmpresarialServiceImpl implements Supervisor_EmpresarialService{
+	
 	@Autowired
 	private Supervisor_EmpresarialDao supervisor_empresarialDao;
+	
 	@Override
 	public Supervisor_Empresarial create(Supervisor_Empresarial s) {
 		// TODO Auto-generated method stub

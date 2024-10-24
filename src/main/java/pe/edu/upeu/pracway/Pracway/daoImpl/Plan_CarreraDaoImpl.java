@@ -1,5 +1,6 @@
 package pe.edu.upeu.pracway.Pracway.daoImpl;
 import java.util.List;
+
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +12,10 @@ import pe.edu.upeu.pracway.Pracway.repository.Plan_CarreraRepository;
 
 @Component
 public class Plan_CarreraDaoImpl implements Plan_CarreraDao{
+	
 	@Autowired
 	private Plan_CarreraRepository plan_carreraRepository;
+	
 	@Override
 	public Plan_Carrera create(Plan_Carrera p) {
 		// TODO Auto-generated method stub

@@ -10,11 +10,12 @@ import pe.edu.upeu.pracway.Pracway.dao.Supervisor_EmpresarialDao;
 import pe.edu.upeu.pracway.Pracway.entity.Supervisor_Empresarial;
 import pe.edu.upeu.pracway.Pracway.repository.Supervisor_EmpresarialRepository;
 
-
 @Component
 public class Supervisor_EmpresarialDaoImpl implements Supervisor_EmpresarialDao {
+	
 	@Autowired 
 	private Supervisor_EmpresarialRepository supervisor_empresarialRepository;
+	
 	@Override
 	public Supervisor_Empresarial create(Supervisor_Empresarial s) {
 		// TODO Auto-generated method stub

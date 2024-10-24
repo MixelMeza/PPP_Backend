@@ -5,7 +5,6 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
 
 import pe.edu.upeu.pracway.Pracway.dao.CarreraDao;
 import pe.edu.upeu.pracway.Pracway.entity.Carrera;

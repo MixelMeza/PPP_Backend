@@ -16,24 +16,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.validation.Valid;
-import pe.edu.upeu.pracway.Pracway.entity.Detalle_Doc;
-import pe.edu.upeu.pracway.Pracway.service.Detalle_DocService;
+import pe.edu.upeu.pracway.Pracway.entity.Evaluacion;
+import pe.edu.upeu.pracway.Pracway.service.EvaluacionService;
 
 @RestController
-@RequestMapping("/api/detalle_doc")
-public class Detalle_DocController {
-
+@RequestMapping("/api/evaluaciones")
+public class EvaluacionController {
+	
 	@Autowired
-	private Detalle_DocService detalle_docService;
+	private EvaluacionService evaluacionService;
 	
 	@GetMapping
-	public ResponseEntity<List<Detalle_Doc>> readAll(){
+	public ResponseEntity<List<Evaluacion>> readAll(){
 		try {
-			List<Detalle_Doc> detalle_doc = detalle_docService.readAll();
-			if(detalle_doc.isEmpty()) {
+			List<Evaluacion> evaluaciones = evaluacionService.readAll();
+			if(evaluaciones.isEmpty()) {
 				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 			}
-			return new ResponseEntity<>(detalle_doc, HttpStatus.OK);
+			return new ResponseEntity<>(evaluaciones, HttpStatus.OK);
 		} catch (Exception e) {
 			// TODO: handle exception
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -41,10 +41,10 @@ public class Detalle_DocController {
 		
 	}
 	@PostMapping
-	public ResponseEntity<Detalle_Doc> crear(@Valid @RequestBody Detalle_Doc det){
+	public ResponseEntity<Evaluacion> crear(@Valid @RequestBody Evaluacion eval){
 		try {
-			Detalle_Doc d = detalle_docService.create(det);
-			return new ResponseEntity<>(d, HttpStatus.CREATED);
+			Evaluacion e = evaluacionService.create(eval);
+			return new ResponseEntity<>(e, HttpStatus.CREATED);
 		} catch (Exception e) {
 			// TODO: handle exception
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -52,10 +52,10 @@ public class Detalle_DocController {
 		
 	}
 	@GetMapping("/{id}")
-	public ResponseEntity<Detalle_Doc> getDetalle_DocId(@PathVariable("id") Long id){
+	public ResponseEntity<Evaluacion> getEvaluacionId(@PathVariable("id") Long id){
 		try {
-			Detalle_Doc d = detalle_docService.read(id).get();
-			return new ResponseEntity<>(d, HttpStatus.CREATED);
+			Evaluacion e = evaluacionService.read(id).get();
+			return new ResponseEntity<>(e, HttpStatus.CREATED);
 		} catch (Exception e) {
 			// TODO: handle exception
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -63,9 +63,9 @@ public class Detalle_DocController {
 		
 	}
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Detalle_Doc> delDetalle_Doc(@PathVariable("id") Long id){
+	public ResponseEntity<Evaluacion> delEvaluacion(@PathVariable("id") Long id){
 		try {
-			detalle_docService.delete(id);
+			evaluacionService.delete(id);
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -74,14 +74,13 @@ public class Detalle_DocController {
 		
 	}
 	@PutMapping("/{id}")
-	public ResponseEntity<?> updateDetalle_Doc(@PathVariable("id") Long id, @Valid @RequestBody Detalle_Doc det){
+	public ResponseEntity<?> updateEvaluacion(@PathVariable("id") Long id, @Valid @RequestBody Evaluacion eval){
 
-			Optional<Detalle_Doc> d = detalle_docService.read(id);
-			if(d.isEmpty()) {
+			Optional<Evaluacion> e = evaluacionService.read(id);
+			if(e.isEmpty()) {
 				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-			}else {
-				
-				return new ResponseEntity<>(detalle_docService.update(det), HttpStatus.OK);
+			} else {
+				return new ResponseEntity<>(evaluacionService.update(eval), HttpStatus.OK);
 			}		
 		
 	}
