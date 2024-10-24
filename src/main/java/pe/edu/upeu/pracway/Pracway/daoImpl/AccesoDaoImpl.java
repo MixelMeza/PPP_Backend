@@ -44,5 +44,16 @@ public class AccesoDaoImpl implements AccesoDao{
 		// TODO Auto-generated method stub
 		return accesoRepository.findAll();
 	}
+	
+	
+	 @Override
+	    public List<Acceso> findByRolNombre(String rol) {
+	        return accesoRepository.findByRolNombre(rol);
+	    }
+
+	    @Override
+	    public boolean userHasAccessToUrl(String username, String url) {
+	        return accesoRepository.userHasAccessToUrl(username, url);
+	    }
 
 }
