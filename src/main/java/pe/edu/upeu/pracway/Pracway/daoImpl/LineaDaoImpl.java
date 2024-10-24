@@ -1,7 +1,7 @@
 package pe.edu.upeu.pracway.Pracway.daoImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 
 import pe.edu.upeu.pracway.Pracway.dao.LineaDao;
 import pe.edu.upeu.pracway.Pracway.entity.Linea;
@@ -10,7 +10,7 @@ import pe.edu.upeu.pracway.Pracway.repository.LineaRepository;
 import java.util.List;
 import java.util.Optional;
 
-@Repository
+@Component
 public class LineaDaoImpl implements LineaDao {
     
 	@Autowired
