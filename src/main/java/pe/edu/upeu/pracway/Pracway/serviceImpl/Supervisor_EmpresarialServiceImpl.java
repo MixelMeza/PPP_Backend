@@ -4,13 +4,18 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import pe.edu.upeu.pracway.Pracway.dao.Supervisor_EmpresarialDao;
 import pe.edu.upeu.pracway.Pracway.entity.Supervisor_Empresarial;
 import pe.edu.upeu.pracway.Pracway.service.Supervisor_EmpresarialService;
 
+@Service
 public class Supervisor_EmpresarialServiceImpl implements Supervisor_EmpresarialService{
+	
 	@Autowired
 	private Supervisor_EmpresarialDao supervisor_empresarialDao;
+	
 	@Override
 	public Supervisor_Empresarial create(Supervisor_Empresarial s) {
 		// TODO Auto-generated method stub
