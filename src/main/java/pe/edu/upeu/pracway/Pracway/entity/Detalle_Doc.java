@@ -2,12 +2,14 @@ package pe.edu.upeu.pracway.Pracway.entity;
 
 import java.util.Date;
 
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -34,4 +36,5 @@ public class Detalle_Doc {
 	@ManyToOne
 	@JoinColumn(name="detalle_ppp_id", nullable = false)
 	private Detalle_PPP detalle_ppp;
+
 }
