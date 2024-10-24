@@ -37,4 +37,9 @@ public class Proceso {
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy = "proceso")
 	@JsonIgnore
 	private Set<Proceso_Requisito> proceso_requisito;
+	
+	
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy = "proceso")
+	@JsonIgnore
+	private Set<Detalle_PPP> detalle_ppp;
 }

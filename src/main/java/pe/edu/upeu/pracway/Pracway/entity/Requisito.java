@@ -36,5 +36,9 @@ public class Requisito {
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy = "requisito")
 	@JsonIgnore
 	private Set<Proceso_Requisito> proceso_requisito;
+	
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy = "requisito")
+	@JsonIgnore
+	private Set<Detalle_PPP> detalle_ppp;
 
 }
