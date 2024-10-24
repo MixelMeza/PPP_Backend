@@ -10,23 +10,22 @@ import pe.edu.upeu.pracway.Pracway.dao.ProcesoDao;
 import pe.edu.upeu.pracway.Pracway.entity.Proceso;
 import pe.edu.upeu.pracway.Pracway.service.ProcesoService;
 
-
 @Service
 public class ProcesoServiceImpl implements ProcesoService {
 
 	@Autowired
 	private ProcesoDao dao;
-	
+
 	@Override
 	public void create(Proceso u) {
 		// TODO Auto-generated method stub
-		 dao.create(u);
+		dao.create(u);
 	}
 
 	@Override
 	public void update(Proceso u) {
 		// TODO Auto-generated method stub
-		 dao.update(u);
+		dao.update(u);
 	}
 
 	@Override

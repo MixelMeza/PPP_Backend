@@ -20,67 +20,66 @@ import jakarta.validation.Valid;
 import pe.edu.upeu.pracway.Pracway.entity.Periodo;
 import pe.edu.upeu.pracway.Pracway.service.PeriodoService;
 
-
 @RestController
 @RequestMapping("/api/periodos")
 public class PeriodoController {
 
-    @Autowired
-    private PeriodoService service;
+	@Autowired
+	private PeriodoService service;
 
-    @GetMapping
-    public ResponseEntity<List<Periodo>> readAll() {
-        try {
-            List<Periodo> periodos = service.readAll();
-            if (periodos.isEmpty()) {
-                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-            }
-            return new ResponseEntity<>(periodos, HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
+	@GetMapping
+	public ResponseEntity<List<Periodo>> readAll() {
+		try {
+			List<Periodo> periodos = service.readAll();
+			if (periodos.isEmpty()) {
+				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+			}
+			return new ResponseEntity<>(periodos, HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
 
-    @PostMapping
-    public ResponseEntity<Periodo> crearPeriodo(@Valid @RequestBody Periodo periodo) {
-        try {
-            service.create(periodo);
-            return new ResponseEntity<>(HttpStatus.CREATED);
-        } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
+	@PostMapping
+	public ResponseEntity<Periodo> crearPeriodo(@Valid @RequestBody Periodo periodo) {
+		try {
+			service.create(periodo);
+			return new ResponseEntity<>(HttpStatus.CREATED);
+		} catch (Exception e) {
+			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Periodo> getPeriodoId(@PathVariable("id") Long id) {
-        try {
-            Periodo periodo = service.read(id).get();
-            return new ResponseEntity<>(periodo, HttpStatus.OK);
-        } catch (NoSuchElementException e) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
+	@GetMapping("/{id}")
+	public ResponseEntity<Periodo> getPeriodoId(@PathVariable("id") Long id) {
+		try {
+			Periodo periodo = service.read(id).get();
+			return new ResponseEntity<>(periodo, HttpStatus.OK);
+		} catch (NoSuchElementException e) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		} catch (Exception e) {
+			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Periodo> delPeriodo(@PathVariable("id") Long id) {
-        try {
-            service.delete(id);
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
+	@DeleteMapping("/{id}")
+	public ResponseEntity<Periodo> delPeriodo(@PathVariable("id") Long id) {
+		try {
+			service.delete(id);
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		} catch (Exception e) {
+			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
 
-    @PutMapping("/{id}")
-    public ResponseEntity<?> updatePeriodo(@PathVariable("id") Long id, @Valid @RequestBody Periodo periodo) {
-        Optional<Periodo> per = service.read(id);
-        if (per.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        } else {
-            service.update(periodo);
-            return new ResponseEntity<>(HttpStatus.OK);
-        }
-    }
+	@PutMapping("/{id}")
+	public ResponseEntity<?> updatePeriodo(@PathVariable("id") Long id, @Valid @RequestBody Periodo periodo) {
+		Optional<Periodo> per = service.read(id);
+		if (per.isEmpty()) {
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		} else {
+			service.update(periodo);
+			return new ResponseEntity<>(HttpStatus.OK);
+		}
+	}
 }

@@ -45,5 +45,5 @@ public class Solicitud_PPPServiceImpl implements Solicitud_PPPService {
 		// TODO Auto-generated method stub
 		return solicitud_PPPDao.readAll();
 	}
-	
+
 }

@@ -18,4 +18,5 @@ public interface EmpresaRepository extends JpaRepository<Empresa, Long>{
 
     @Procedure(procedureName = "sp_eliminar_empresa")
     void eliminarEmpresa(Long p_id);
+    
 }

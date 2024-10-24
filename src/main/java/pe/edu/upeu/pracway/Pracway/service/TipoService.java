@@ -5,10 +5,6 @@ import java.util.Optional;
 
 import pe.edu.upeu.pracway.Pracway.entity.Tipo;
 
-
-
-
-
 public interface TipoService {
 	void create(Tipo t);
 	void update(Tipo t);

@@ -13,31 +13,31 @@ import pe.edu.upeu.pracway.Pracway.service.Proceso_RequisitoService;
 @Service
 public class Proceso_RequisitoServiceImpl implements Proceso_RequisitoService {
 
-    @Autowired
-    private Proceso_RequisitoDao procesoRequisitoDao;
+	@Autowired
+	private Proceso_RequisitoDao procesoRequisitoDao;
 
-    @Override
-    public Proceso_Requisito create(Proceso_Requisito p) {
-        return procesoRequisitoDao.create(p);
-    }
+	@Override
+	public Proceso_Requisito create(Proceso_Requisito p) {
+		return procesoRequisitoDao.create(p);
+	}
 
-    @Override
-    public Proceso_Requisito update(Proceso_Requisito p) {
-        return procesoRequisitoDao.update(p);
-    }
+	@Override
+	public Proceso_Requisito update(Proceso_Requisito p) {
+		return procesoRequisitoDao.update(p);
+	}
 
-    @Override
-    public void delete(Long id) {
-        procesoRequisitoDao.delete(id);
-    }
+	@Override
+	public void delete(Long id) {
+		procesoRequisitoDao.delete(id);
+	}
 
-    @Override
-    public Optional<Proceso_Requisito> read(Long id) {
-        return procesoRequisitoDao.read(id);
-    }
+	@Override
+	public Optional<Proceso_Requisito> read(Long id) {
+		return procesoRequisitoDao.read(id);
+	}
 
-    @Override
-    public List<Proceso_Requisito> readAll() {
-        return procesoRequisitoDao.readAll();
-    }
+	@Override
+	public List<Proceso_Requisito> readAll() {
+		return procesoRequisitoDao.readAll();
+	}
 }

@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import pe.edu.upeu.pracway.Pracway.entity.Proceso_Requisito;
 
 @Repository
-public interface Proceso_RequisitoRepository extends JpaRepository<Proceso_Requisito, Long>{
+public interface Proceso_RequisitoRepository extends JpaRepository<Proceso_Requisito, Long> {
 
 }

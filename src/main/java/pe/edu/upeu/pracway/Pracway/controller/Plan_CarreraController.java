@@ -2,7 +2,6 @@ package pe.edu.upeu.pracway.Pracway.controller;
 
 import java.util.List;
 
-
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
@@ -25,14 +24,15 @@ import pe.edu.upeu.pracway.Pracway.service.Plan_CarreraService;
 @RestController
 @RequestMapping("/api/plan_carrera")
 public class Plan_CarreraController {
+
 	@Autowired
 	private Plan_CarreraService plan_carreraService;
-	
+
 	@GetMapping
-	public ResponseEntity<List<Plan_Carrera>> readAll(){
+	public ResponseEntity<List<Plan_Carrera>> readAll() {
 		try {
 			List<Plan_Carrera> plan_carrera = plan_carreraService.readAll();
-			if(plan_carrera.isEmpty()) {
+			if (plan_carrera.isEmpty()) {
 				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 			}
 			return new ResponseEntity<>(plan_carrera, HttpStatus.OK);
@@ -40,10 +40,11 @@ public class Plan_CarreraController {
 			// TODO: handle exception
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		
+
 	}
+
 	@PostMapping
-	public ResponseEntity<Plan_Carrera> crear(@Valid @RequestBody Plan_Carrera pla){
+	public ResponseEntity<Plan_Carrera> crear(@Valid @RequestBody Plan_Carrera pla) {
 		try {
 			plan_carreraService.create(pla);
 			return new ResponseEntity<>(HttpStatus.CREATED);
@@ -51,10 +52,11 @@ public class Plan_CarreraController {
 			// TODO: handle exception
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		
+
 	}
+
 	@GetMapping("/{id}")
-	public ResponseEntity<Plan_Carrera> getPlan_CarreraId(@PathVariable("id") Long id){
+	public ResponseEntity<Plan_Carrera> getPlan_CarreraId(@PathVariable("id") Long id) {
 		try {
 			Plan_Carrera p = plan_carreraService.read(id).get();
 			return new ResponseEntity<>(p, HttpStatus.CREATED);
@@ -65,10 +67,11 @@ public class Plan_CarreraController {
 			// TODO: handle exception
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		
+
 	}
+
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Plan_Carrera> delPlan_Carrera(@PathVariable("id") Long id){
+	public ResponseEntity<Plan_Carrera> delPlan_Carrera(@PathVariable("id") Long id) {
 		try {
 			plan_carreraService.delete(id);
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -76,18 +79,19 @@ public class Plan_CarreraController {
 			// TODO: handle exception
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		
-	}
-	@PutMapping("/{id}")
-	public ResponseEntity<?> updatePlan_Carrera(@PathVariable("id") Long id, @Valid @RequestBody Plan_Carrera pla){
 
-			Optional<Plan_Carrera> p = plan_carreraService.read(id);
-			if(p.isEmpty()) {
-				return new ResponseEntity<>(HttpStatus.NO_CONTENT);	 
-		    } else {
-		    	plan_carreraService.update(pla);
-		    	return new ResponseEntity<>( HttpStatus.OK);
-		    }
-		
+	}
+
+	@PutMapping("/{id}")
+	public ResponseEntity<?> updatePlan_Carrera(@PathVariable("id") Long id, @Valid @RequestBody Plan_Carrera pla) {
+
+		Optional<Plan_Carrera> p = plan_carreraService.read(id);
+		if (p.isEmpty()) {
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		} else {
+			plan_carreraService.update(pla);
+			return new ResponseEntity<>(HttpStatus.OK);
+		}
+
 	}
 }

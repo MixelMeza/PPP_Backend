@@ -23,14 +23,15 @@ import pe.edu.upeu.pracway.Pracway.service.RolService;
 @RestController
 @RequestMapping("/api/roles")
 public class RolController {
+
 	@Autowired
 	private RolService rolService;
-	
+
 	@GetMapping
-	public ResponseEntity<List<Rol>> readAll(){
+	public ResponseEntity<List<Rol>> readAll() {
 		try {
 			List<Rol> Roles = rolService.readAll();
-			if(Roles.isEmpty()) {
+			if (Roles.isEmpty()) {
 				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 			}
 			return new ResponseEntity<>(Roles, HttpStatus.OK);
@@ -38,10 +39,11 @@ public class RolController {
 			// TODO: handle exception
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		
+
 	}
+
 	@PostMapping
-	public ResponseEntity<Rol> crearRol(@Valid @RequestBody Rol rol){
+	public ResponseEntity<Rol> crearRol(@Valid @RequestBody Rol rol) {
 		try {
 			rolService.create(rol);
 			return new ResponseEntity<>(HttpStatus.CREATED);
@@ -49,10 +51,11 @@ public class RolController {
 			// TODO: handle exception
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		
+
 	}
+
 	@GetMapping("/{id}")
-	public ResponseEntity<Rol> getRolId(@PathVariable("id") Long id){
+	public ResponseEntity<Rol> getRolId(@PathVariable("id") Long id) {
 		try {
 			Rol r = rolService.read(id).get();
 			return new ResponseEntity<>(r, HttpStatus.CREATED);
@@ -62,10 +65,11 @@ public class RolController {
 			// TODO: handle exception
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		
+
 	}
+
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Rol> delRol(@PathVariable("id") Long id){
+	public ResponseEntity<Rol> delRol(@PathVariable("id") Long id) {
 		try {
 			rolService.delete(id);
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -73,18 +77,19 @@ public class RolController {
 			// TODO: handle exception
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		
-	}
-	@PutMapping("/{id}")
-	public ResponseEntity<?> updateRol(@PathVariable("id") Long id, @Valid @RequestBody Rol rol){
 
-			Optional<Rol> r = rolService.read(id);
-			if(r.isEmpty()) {
-				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-			}else {
-				rolService.update(rol);
-				return new ResponseEntity<>(HttpStatus.OK);
-			}		
-		
+	}
+
+	@PutMapping("/{id}")
+	public ResponseEntity<?> updateRol(@PathVariable("id") Long id, @Valid @RequestBody Rol rol) {
+
+		Optional<Rol> r = rolService.read(id);
+		if (r.isEmpty()) {
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		} else {
+			rolService.update(rol);
+			return new ResponseEntity<>(HttpStatus.OK);
+		}
+
 	}
 }

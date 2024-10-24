@@ -25,60 +25,61 @@ import pe.edu.upeu.pracway.Pracway.service.Supervisor_AcademicoService;
 @CrossOrigin(origins = "http://localhost:3000")
 public class Supervisor_AcademicoController {
 
-    @Autowired
-    private Supervisor_AcademicoService supervisorAcademicoService;
+	@Autowired
+	private Supervisor_AcademicoService supervisorAcademicoService;
 
-    @GetMapping
-    public ResponseEntity<List<Supervisor_Academico>> readAll() {
-        try {
-            List<Supervisor_Academico> supervisores = supervisorAcademicoService.readAll();
-            if (supervisores.isEmpty()) {
-                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-            }
-            return new ResponseEntity<>(supervisores, HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
+	@GetMapping
+	public ResponseEntity<List<Supervisor_Academico>> readAll() {
+		try {
+			List<Supervisor_Academico> supervisores = supervisorAcademicoService.readAll();
+			if (supervisores.isEmpty()) {
+				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+			}
+			return new ResponseEntity<>(supervisores, HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
 
-    @PostMapping
-    public ResponseEntity<Supervisor_Academico> crear(@Valid @RequestBody Supervisor_Academico supervisor) {
-        try {
-            Supervisor_Academico s = supervisorAcademicoService.create(supervisor);
-            return new ResponseEntity<>(s, HttpStatus.CREATED);
-        } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
+	@PostMapping
+	public ResponseEntity<Supervisor_Academico> crear(@Valid @RequestBody Supervisor_Academico supervisor) {
+		try {
+			Supervisor_Academico s = supervisorAcademicoService.create(supervisor);
+			return new ResponseEntity<>(s, HttpStatus.CREATED);
+		} catch (Exception e) {
+			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Supervisor_Academico> getSupervisorById(@PathVariable("id") Long id) {
-        try {
-            Supervisor_Academico s = supervisorAcademicoService.read(id).get();
-            return new ResponseEntity<>(s, HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
+	@GetMapping("/{id}")
+	public ResponseEntity<Supervisor_Academico> getSupervisorById(@PathVariable("id") Long id) {
+		try {
+			Supervisor_Academico s = supervisorAcademicoService.read(id).get();
+			return new ResponseEntity<>(s, HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Supervisor_Academico> delSupervisor(@PathVariable("id") Long id) {
-        try {
-            supervisorAcademicoService.delete(id);
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
+	@DeleteMapping("/{id}")
+	public ResponseEntity<Supervisor_Academico> delSupervisor(@PathVariable("id") Long id) {
+		try {
+			supervisorAcademicoService.delete(id);
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		} catch (Exception e) {
+			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
 
-    @PutMapping("/{id}")
-    public ResponseEntity<?> updateSupervisor(@PathVariable("id") Long id, @Valid @RequestBody Supervisor_Academico supervisor) {
-        Optional<Supervisor_Academico> existingSupervisor = supervisorAcademicoService.read(id);
-        if (existingSupervisor.isPresent()) {
-            supervisor.setId(id); 
-            return new ResponseEntity<>(supervisorAcademicoService.update(supervisor), HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-    }
+	@PutMapping("/{id}")
+	public ResponseEntity<?> updateSupervisor(@PathVariable("id") Long id,
+			@Valid @RequestBody Supervisor_Academico supervisor) {
+		Optional<Supervisor_Academico> existingSupervisor = supervisorAcademicoService.read(id);
+		if (existingSupervisor.isPresent()) {
+			supervisor.setId(id);
+			return new ResponseEntity<>(supervisorAcademicoService.update(supervisor), HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		}
+	}
 }

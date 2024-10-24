@@ -10,10 +10,9 @@ import pe.edu.upeu.pracway.Pracway.dao.CarreraDao;
 import pe.edu.upeu.pracway.Pracway.entity.Carrera;
 import pe.edu.upeu.pracway.Pracway.service.CarreraService;
 
-
 @Service
 public class CarreraServiceImpl implements CarreraService {
-	
+
 	@Autowired
 	private CarreraDao dao;
 

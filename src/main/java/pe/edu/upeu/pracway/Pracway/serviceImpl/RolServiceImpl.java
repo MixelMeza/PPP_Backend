@@ -11,10 +11,11 @@ import pe.edu.upeu.pracway.Pracway.entity.Rol;
 import pe.edu.upeu.pracway.Pracway.service.RolService;
 
 @Service
-public class RolServiceImpl implements RolService{
+public class RolServiceImpl implements RolService {
 
 	@Autowired
 	private RolDao rolDao;
+
 	@Override
 	public void create(Rol r) {
 		// TODO Auto-generated method stub

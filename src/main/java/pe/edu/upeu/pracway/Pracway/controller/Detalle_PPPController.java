@@ -18,19 +18,18 @@ import jakarta.validation.Valid;
 import pe.edu.upeu.pracway.Pracway.entity.Detalle_PPP;
 import pe.edu.upeu.pracway.Pracway.service.Detalle_PPPService;
 
-
 @RestController
-@RequestMapping("/api/dia")
+@RequestMapping("/api/detalle_ppp")
 public class Detalle_PPPController {
-	
+
 	@Autowired
 	private Detalle_PPPService detalle_PPPService;
-	
+
 	@GetMapping
-	public ResponseEntity<List<Detalle_PPP>> readAll(){
+	public ResponseEntity<List<Detalle_PPP>> readAll() {
 		try {
 			List<Detalle_PPP> detalle_PPP = detalle_PPPService.readAll();
-			if(detalle_PPP.isEmpty()) {
+			if (detalle_PPP.isEmpty()) {
 				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 			}
 			return new ResponseEntity<>(detalle_PPP, HttpStatus.OK);
@@ -38,10 +37,11 @@ public class Detalle_PPPController {
 			// TODO: handle exception
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		
+
 	}
+
 	@PostMapping
-	public ResponseEntity<Detalle_PPP> crear(@Valid @RequestBody Detalle_PPP det){
+	public ResponseEntity<Detalle_PPP> crear(@Valid @RequestBody Detalle_PPP det) {
 		try {
 			Detalle_PPP d = detalle_PPPService.create(det);
 			return new ResponseEntity<>(d, HttpStatus.CREATED);
@@ -49,10 +49,11 @@ public class Detalle_PPPController {
 			// TODO: handle exception
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		
+
 	}
+
 	@GetMapping("/{id}")
-	public ResponseEntity<Detalle_PPP> getDetalle_PPPId(@PathVariable("id") Long id){
+	public ResponseEntity<Detalle_PPP> getDetalle_PPPId(@PathVariable("id") Long id) {
 		try {
 			Detalle_PPP d = detalle_PPPService.read(id).get();
 			return new ResponseEntity<>(d, HttpStatus.CREATED);
@@ -60,10 +61,11 @@ public class Detalle_PPPController {
 			// TODO: handle exception
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		
+
 	}
+
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Detalle_PPP> delDetalle_PPP(@PathVariable("id") Long id){
+	public ResponseEntity<Detalle_PPP> delDetalle_PPP(@PathVariable("id") Long id) {
 		try {
 			detalle_PPPService.delete(id);
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -71,18 +73,19 @@ public class Detalle_PPPController {
 			// TODO: handle exception
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		
-	}
-	@PutMapping("/{id}")
-	public ResponseEntity<?> updateDetalle_PPP(@PathVariable("id") Long id, @Valid @RequestBody Detalle_PPP det){
 
-			Optional<Detalle_PPP> d = detalle_PPPService.read(id);
-			if(d.isEmpty()) {
-				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-			}else {
-				
-				return new ResponseEntity<>(detalle_PPPService.update(det), HttpStatus.OK);
-			}		
-		
+	}
+
+	@PutMapping("/{id}")
+	public ResponseEntity<?> updateDetalle_PPP(@PathVariable("id") Long id, @Valid @RequestBody Detalle_PPP det) {
+
+		Optional<Detalle_PPP> d = detalle_PPPService.read(id);
+		if (d.isEmpty()) {
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		} else {
+
+			return new ResponseEntity<>(detalle_PPPService.update(det), HttpStatus.OK);
+		}
+
 	}
 }

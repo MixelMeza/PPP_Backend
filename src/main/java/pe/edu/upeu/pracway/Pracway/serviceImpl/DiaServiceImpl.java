@@ -11,11 +11,11 @@ import pe.edu.upeu.pracway.Pracway.entity.Dia;
 import pe.edu.upeu.pracway.Pracway.service.DiaService;
 
 @Service
-public class DiaServiceImpl implements DiaService{
+public class DiaServiceImpl implements DiaService {
 
 	@Autowired
 	private DiaDao diaDao;
-	
+
 	@Override
 	public Dia create(Dia d) {
 		// TODO Auto-generated method stub

@@ -8,5 +8,4 @@ import pe.edu.upeu.pracway.Pracway.entity.Estudiante;
 @Repository
 public interface EstudianteRepository extends JpaRepository<Estudiante,Long>{
 
-
 }

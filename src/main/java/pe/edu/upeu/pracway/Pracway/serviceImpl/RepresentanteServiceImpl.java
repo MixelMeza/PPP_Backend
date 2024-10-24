@@ -11,10 +11,11 @@ import pe.edu.upeu.pracway.Pracway.entity.Representante;
 import pe.edu.upeu.pracway.Pracway.service.RepresentanteService;
 
 @Service
-public class RepresentanteServiceImpl implements RepresentanteService{
+public class RepresentanteServiceImpl implements RepresentanteService {
 
 	@Autowired
 	private RepresentanteDao representanteDao;
+
 	@Override
 	public Representante create(Representante r) {
 		// TODO Auto-generated method stub

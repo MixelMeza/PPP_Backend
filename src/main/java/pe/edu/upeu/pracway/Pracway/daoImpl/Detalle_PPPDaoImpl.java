@@ -4,14 +4,18 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import pe.edu.upeu.pracway.Pracway.dao.Detalle_PPPDao;
 import pe.edu.upeu.pracway.Pracway.entity.Detalle_PPP;
 import pe.edu.upeu.pracway.Pracway.repository.Detalle_PPPRepository;
 
+@Component
 public class Detalle_PPPDaoImpl implements Detalle_PPPDao{
-@Autowired
-private Detalle_PPPRepository detalle_PPPRepository;
+	
+	@Autowired
+	private Detalle_PPPRepository detalle_PPPRepository;
+	
 	@Override
 	public Detalle_PPP create(Detalle_PPP d) {
 		// TODO Auto-generated method stub

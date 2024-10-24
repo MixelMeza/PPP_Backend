@@ -31,8 +31,8 @@ public class Periodo {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sq_periodo")
     @SequenceGenerator(name = "sq_periodo", sequenceName = "sq_periodo", allocationSize = 1)
-    private Long id;
     
+    private Long id;
     private LocalDate fecha_inicio;
     private LocalDate fecha_fin;
     private LocalTime hora_inicio;

@@ -32,8 +32,6 @@ public class Proceso {
 	private String tipo;
 	private char estado;
 	
-	
-	
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy = "proceso")
 	@JsonIgnore
 	private Set<Proceso_Requisito> proceso_requisito;

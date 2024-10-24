@@ -19,19 +19,18 @@ import jakarta.validation.Valid;
 import pe.edu.upeu.pracway.Pracway.entity.Dia;
 import pe.edu.upeu.pracway.Pracway.service.DiaService;
 
-
 @RestController
 @RequestMapping("/api/dia")
 public class DiaController {
-	
+
 	@Autowired
 	private DiaService diaService;
-	
+
 	@GetMapping
-	public ResponseEntity<List<Dia>> readAll(){
+	public ResponseEntity<List<Dia>> readAll() {
 		try {
 			List<Dia> dia = diaService.readAll();
-			if(dia.isEmpty()) {
+			if (dia.isEmpty()) {
 				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 			}
 			return new ResponseEntity<>(dia, HttpStatus.OK);
@@ -39,10 +38,11 @@ public class DiaController {
 			// TODO: handle exception
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		
+
 	}
+
 	@PostMapping
-	public ResponseEntity<Dia> crear(@Valid @RequestBody Dia dat){
+	public ResponseEntity<Dia> crear(@Valid @RequestBody Dia dat) {
 		try {
 			Dia d = diaService.create(dat);
 			return new ResponseEntity<>(d, HttpStatus.CREATED);
@@ -50,10 +50,11 @@ public class DiaController {
 			// TODO: handle exception
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		
+
 	}
+
 	@GetMapping("/{id}")
-	public ResponseEntity<Dia> getDiaId(@PathVariable("id") Long id){
+	public ResponseEntity<Dia> getDiaId(@PathVariable("id") Long id) {
 		try {
 			Dia d = diaService.read(id).get();
 			return new ResponseEntity<>(d, HttpStatus.CREATED);
@@ -61,10 +62,11 @@ public class DiaController {
 			// TODO: handle exception
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		
+
 	}
+
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Dia> delDia(@PathVariable("id") Long id){
+	public ResponseEntity<Dia> delDia(@PathVariable("id") Long id) {
 		try {
 			diaService.delete(id);
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -72,18 +74,19 @@ public class DiaController {
 			// TODO: handle exception
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		
-	}
-	@PutMapping("/{id}")
-	public ResponseEntity<?> updateDia(@PathVariable("id") Long id, @Valid @RequestBody Dia dat){
 
-			Optional<Dia> d = diaService.read(id);
-			if(d.isEmpty()) {
-				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-			}else {
-				
-				return new ResponseEntity<>(diaService.update(dat), HttpStatus.OK);
-			}		
-		
+	}
+
+	@PutMapping("/{id}")
+	public ResponseEntity<?> updateDia(@PathVariable("id") Long id, @Valid @RequestBody Dia dat) {
+
+		Optional<Dia> d = diaService.read(id);
+		if (d.isEmpty()) {
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		} else {
+
+			return new ResponseEntity<>(diaService.update(dat), HttpStatus.OK);
+		}
+
 	}
 }

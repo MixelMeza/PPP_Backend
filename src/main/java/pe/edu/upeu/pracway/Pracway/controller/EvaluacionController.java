@@ -22,15 +22,15 @@ import pe.edu.upeu.pracway.Pracway.service.EvaluacionService;
 @RestController
 @RequestMapping("/api/evaluaciones")
 public class EvaluacionController {
-	
+
 	@Autowired
 	private EvaluacionService evaluacionService;
-	
+
 	@GetMapping
-	public ResponseEntity<List<Evaluacion>> readAll(){
+	public ResponseEntity<List<Evaluacion>> readAll() {
 		try {
 			List<Evaluacion> evaluaciones = evaluacionService.readAll();
-			if(evaluaciones.isEmpty()) {
+			if (evaluaciones.isEmpty()) {
 				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 			}
 			return new ResponseEntity<>(evaluaciones, HttpStatus.OK);
@@ -38,10 +38,11 @@ public class EvaluacionController {
 			// TODO: handle exception
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		
+
 	}
+
 	@PostMapping
-	public ResponseEntity<Evaluacion> crear(@Valid @RequestBody Evaluacion eval){
+	public ResponseEntity<Evaluacion> crear(@Valid @RequestBody Evaluacion eval) {
 		try {
 			Evaluacion e = evaluacionService.create(eval);
 			return new ResponseEntity<>(e, HttpStatus.CREATED);
@@ -49,10 +50,11 @@ public class EvaluacionController {
 			// TODO: handle exception
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		
+
 	}
+
 	@GetMapping("/{id}")
-	public ResponseEntity<Evaluacion> getEvaluacionId(@PathVariable("id") Long id){
+	public ResponseEntity<Evaluacion> getEvaluacionId(@PathVariable("id") Long id) {
 		try {
 			Evaluacion e = evaluacionService.read(id).get();
 			return new ResponseEntity<>(e, HttpStatus.CREATED);
@@ -60,10 +62,11 @@ public class EvaluacionController {
 			// TODO: handle exception
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		
+
 	}
+
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Evaluacion> delEvaluacion(@PathVariable("id") Long id){
+	public ResponseEntity<Evaluacion> delEvaluacion(@PathVariable("id") Long id) {
 		try {
 			evaluacionService.delete(id);
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -71,17 +74,18 @@ public class EvaluacionController {
 			// TODO: handle exception
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		
-	}
-	@PutMapping("/{id}")
-	public ResponseEntity<?> updateEvaluacion(@PathVariable("id") Long id, @Valid @RequestBody Evaluacion eval){
 
-			Optional<Evaluacion> e = evaluacionService.read(id);
-			if(e.isEmpty()) {
-				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-			} else {
-				return new ResponseEntity<>(evaluacionService.update(eval), HttpStatus.OK);
-			}		
-		
+	}
+
+	@PutMapping("/{id}")
+	public ResponseEntity<?> updateEvaluacion(@PathVariable("id") Long id, @Valid @RequestBody Evaluacion eval) {
+
+		Optional<Evaluacion> e = evaluacionService.read(id);
+		if (e.isEmpty()) {
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		} else {
+			return new ResponseEntity<>(evaluacionService.update(eval), HttpStatus.OK);
+		}
+
 	}
 }

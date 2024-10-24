@@ -16,75 +16,74 @@ import pe.edu.upeu.pracway.Pracway.service.UsuarioService;
 @Service
 public class UsuarioServiceImpl implements UsuarioService {
 
-    @Autowired
-    private UsuarioDao usuarioDao;
+	@Autowired
+	private UsuarioDao usuarioDao;
 
-    @Autowired
-    private PersonaRepository personaRepository; 
+	@Autowired
+	private PersonaRepository personaRepository;
 
-   
-    @Override
-    public Usuario create(Usuario usuario) {
-        try {
-            // Verifica si ya existe un usuario con el mismo nombre de usuario
-            Optional<Usuario> existingUsuario = usuarioDao.findByUsuario(usuario.getUsuario());
-            if (existingUsuario.isPresent()) {
-                throw new RuntimeException("El nombre de usuario ya existe.");
-            }
+	@Override
+	public Usuario create(Usuario usuario) {
+		try {
+			// Verifica si ya existe un usuario con el mismo nombre de usuario
+			Optional<Usuario> existingUsuario = usuarioDao.findByUsuario(usuario.getUsuario());
+			if (existingUsuario.isPresent()) {
+				throw new RuntimeException("El nombre de usuario ya existe.");
+			}
 
-            if (usuario.getPersona() != null && usuario.getPersona().getId() != null) {
-                Persona persona = personaRepository.findById(usuario.getPersona().getId())
-                        .orElseThrow(() -> new RuntimeException("Persona no encontrada"));
-                usuario.setPersona(persona);
-            }
+			if (usuario.getPersona() != null && usuario.getPersona().getId() != null) {
+				Persona persona = personaRepository.findById(usuario.getPersona().getId())
+						.orElseThrow(() -> new RuntimeException("Persona no encontrada"));
+				usuario.setPersona(persona);
+			}
 
-            // Guardar el nuevo usuario
-            return usuarioDao.create(usuario);
-        } catch (Exception e) {
-            throw new RuntimeException("Error al crear el usuario.", e);
-        }
-    }
+			// Guardar el nuevo usuario
+			return usuarioDao.create(usuario);
+		} catch (Exception e) {
+			throw new RuntimeException("Error al crear el usuario.", e);
+		}
+	}
 
-    @Override
-    public Usuario update(Usuario usuario) {
-        return usuarioDao.update(usuario); 
-    }
+	@Override
+	public Usuario update(Usuario usuario) {
+		return usuarioDao.update(usuario);
+	}
 
-    @Override
-    public void delete(Long id) {
-        usuarioDao.delete(id);
-    }
+	@Override
+	public void delete(Long id) {
+		usuarioDao.delete(id);
+	}
 
-    @Override
-    public Optional<Usuario> read(Long id) {
-        return usuarioDao.read(id);  
-    }
+	@Override
+	public Optional<Usuario> read(Long id) {
+		return usuarioDao.read(id);
+	}
 
-    @Override
-    public List<Usuario> readAll() {
-        return usuarioDao.readAll();  
-    }
+	@Override
+	public List<Usuario> readAll() {
+		return usuarioDao.readAll();
+	}
 
-    // Métodos relacionados con roles
-    @Override
-    public void asignarRolAUsuario(Long idUsuario, Long idRol) {
-        usuarioDao.asignarRolAUsuario(idUsuario, idRol);
-    }
+	// Métodos relacionados con roles
+	@Override
+	public void asignarRolAUsuario(Long idUsuario, Long idRol) {
+		usuarioDao.asignarRolAUsuario(idUsuario, idRol);
+	}
 
-    @Override
-    public void eliminarRolDeUsuario(Long idUsuario, Long idRol) {
-        usuarioDao.eliminarRolDeUsuario(idUsuario, idRol);
-    }
+	@Override
+	public void eliminarRolDeUsuario(Long idUsuario, Long idRol) {
+		usuarioDao.eliminarRolDeUsuario(idUsuario, idRol);
+	}
 
-    @Override
-    public List<Rol> obtenerRolesDeUsuario(Long idUsuario) {
-        return usuarioDao.obtenerRolesDeUsuario(idUsuario);  
-    }
+	@Override
+	public List<Rol> obtenerRolesDeUsuario(Long idUsuario) {
+		return usuarioDao.obtenerRolesDeUsuario(idUsuario);
+	}
 
-    @Override
-    public void eliminarTodosLosRolesDeUsuario(Long idUsuario) {
-        usuarioDao.eliminarTodosLosRolesDeUsuario(idUsuario);
-    }
+	@Override
+	public void eliminarTodosLosRolesDeUsuario(Long idUsuario) {
+		usuarioDao.eliminarTodosLosRolesDeUsuario(idUsuario);
+	}
 
 	@Override
 	public Optional<Usuario> findByUsuario(String usuario) {

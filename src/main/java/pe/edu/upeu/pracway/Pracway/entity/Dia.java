@@ -24,6 +24,7 @@ import lombok.Setter;
 @Data
 @Table(name = "Dia")
 public class Dia {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")

@@ -9,21 +9,22 @@ import pe.edu.upeu.pracway.Pracway.dao.TipoDao;
 import pe.edu.upeu.pracway.Pracway.entity.Tipo;
 import pe.edu.upeu.pracway.Pracway.service.TipoService;
 
-
 @Service
 public class TipoServiceImpl implements TipoService {
+
 	@Autowired
 	private TipoDao dao;
+
 	@Override
 	public void create(Tipo t) {
 		// TODO Auto-generated method stub
-		 dao.create(t);
+		dao.create(t);
 	}
 
 	@Override
 	public void update(Tipo t) {
 		// TODO Auto-generated method stub
-		 dao.update(t);
+		dao.update(t);
 	}
 
 	@Override

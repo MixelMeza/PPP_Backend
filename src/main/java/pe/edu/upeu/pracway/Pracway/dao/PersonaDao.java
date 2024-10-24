@@ -5,7 +5,6 @@ import java.util.Optional;
 
 import pe.edu.upeu.pracway.Pracway.entity.Persona;
 
-
 public interface PersonaDao {
 	void create(Persona p);
 	void update(Persona p);

@@ -22,15 +22,15 @@ import pe.edu.upeu.pracway.Pracway.service.Solicitud_PPPService;
 @RestController
 @RequestMapping("/api/solicitud_ppp")
 public class Solicitud_PPPController {
-	
+
 	@Autowired
 	private Solicitud_PPPService solicitud_PPPService;
-	
+
 	@GetMapping
-	public ResponseEntity<List<Solicitud_PPP>> readAll(){
+	public ResponseEntity<List<Solicitud_PPP>> readAll() {
 		try {
 			List<Solicitud_PPP> solicitud_PPP = solicitud_PPPService.readAll();
-			if(solicitud_PPP.isEmpty()) {
+			if (solicitud_PPP.isEmpty()) {
 				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 			}
 			return new ResponseEntity<>(solicitud_PPP, HttpStatus.OK);
@@ -38,10 +38,11 @@ public class Solicitud_PPPController {
 			// TODO: handle exception
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		
+
 	}
+
 	@PostMapping
-	public ResponseEntity<Solicitud_PPP> crear(@Valid @RequestBody Solicitud_PPP sol){
+	public ResponseEntity<Solicitud_PPP> crear(@Valid @RequestBody Solicitud_PPP sol) {
 		try {
 			Solicitud_PPP s = solicitud_PPPService.create(sol);
 			return new ResponseEntity<>(s, HttpStatus.CREATED);
@@ -49,10 +50,11 @@ public class Solicitud_PPPController {
 			// TODO: handle exception
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		
+
 	}
+
 	@GetMapping("/{id}")
-	public ResponseEntity<Solicitud_PPP> getSolicitud_PPPId(@PathVariable("id") Long id){
+	public ResponseEntity<Solicitud_PPP> getSolicitud_PPPId(@PathVariable("id") Long id) {
 		try {
 			Solicitud_PPP s = solicitud_PPPService.read(id).get();
 			return new ResponseEntity<>(s, HttpStatus.CREATED);
@@ -60,10 +62,11 @@ public class Solicitud_PPPController {
 			// TODO: handle exception
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		
+
 	}
+
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Solicitud_PPP> delSolicitud_PPP(@PathVariable("id") Long id){
+	public ResponseEntity<Solicitud_PPP> delSolicitud_PPP(@PathVariable("id") Long id) {
 		try {
 			solicitud_PPPService.delete(id);
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -71,18 +74,19 @@ public class Solicitud_PPPController {
 			// TODO: handle exception
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		
-	}
-	@PutMapping("/{id}")
-	public ResponseEntity<?> updateSolicitud_PPP(@PathVariable("id") Long id, @Valid @RequestBody Solicitud_PPP sol){
 
-			Optional<Solicitud_PPP> s = solicitud_PPPService.read(id);
-			if(s.isEmpty()) {
-				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-			}else {
-				
-				return new ResponseEntity<>(solicitud_PPPService.update(sol), HttpStatus.OK);
-			}		
-		
+	}
+
+	@PutMapping("/{id}")
+	public ResponseEntity<?> updateSolicitud_PPP(@PathVariable("id") Long id, @Valid @RequestBody Solicitud_PPP sol) {
+
+		Optional<Solicitud_PPP> s = solicitud_PPPService.read(id);
+		if (s.isEmpty()) {
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		} else {
+
+			return new ResponseEntity<>(solicitud_PPPService.update(sol), HttpStatus.OK);
+		}
+
 	}
 }

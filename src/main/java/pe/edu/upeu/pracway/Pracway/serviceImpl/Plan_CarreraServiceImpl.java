@@ -11,11 +11,11 @@ import pe.edu.upeu.pracway.Pracway.entity.Plan_Carrera;
 import pe.edu.upeu.pracway.Pracway.service.Plan_CarreraService;
 
 @Service
-public class Plan_CarreraServiceImpl implements Plan_CarreraService{
-	
+public class Plan_CarreraServiceImpl implements Plan_CarreraService {
+
 	@Autowired
 	private Plan_CarreraDao plan_carreraDao;
-	
+
 	@Override
 	public Plan_Carrera create(Plan_Carrera p) {
 		// TODO Auto-generated method stub

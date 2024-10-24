@@ -1,6 +1,5 @@
 package pe.edu.upeu.pracway.Pracway.serviceImpl;
 
-
 import java.util.List;
 import java.util.Optional;
 
@@ -11,23 +10,22 @@ import pe.edu.upeu.pracway.Pracway.dao.RequisitoDao;
 import pe.edu.upeu.pracway.Pracway.entity.Requisito;
 import pe.edu.upeu.pracway.Pracway.service.RequisitoService;
 
-
 @Service
 public class RequisitoServiceImpl implements RequisitoService {
 
 	@Autowired
 	private RequisitoDao dao;
-	
+
 	@Override
 	public void create(Requisito r) {
 		// TODO Auto-generated method stub
-		 dao.create(r);
+		dao.create(r);
 	}
 
 	@Override
 	public void update(Requisito r) {
 		// TODO Auto-generated method stub
-		 dao.update(r);
+		dao.update(r);
 	}
 
 	@Override

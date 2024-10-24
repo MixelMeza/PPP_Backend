@@ -9,6 +9,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import pe.edu.upeu.pracway.Pracway.entity.Acceso;
+
 @Repository
 public interface AccesoRepository extends JpaRepository<Acceso, Long> {
 
@@ -26,8 +27,7 @@ public interface AccesoRepository extends JpaRepository<Acceso, Long> {
     List<Acceso> findByRolNombre(@Param("rol") String rol);
 
     
-    
-    @Query("SELECT COUNT(a) > 0 FROM Acceso a JOIN a.roles r JOIN r.usuarios u WHERE u.username = :username AND a.url = :url AND a.estado = 'A'")
+    @Query("SELECT COUNT(a) > 0 FROM Acceso a JOIN a.roles r JOIN r.usuarios u WHERE u.usuario = :username AND a.url = :url AND a.estado = 'A'")
     boolean userHasAccessToUrl(@Param("username") String username, @Param("url") String url);
 
 }

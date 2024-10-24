@@ -1,6 +1,5 @@
 package pe.edu.upeu.pracway.Pracway.controller;
 
-
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -21,19 +20,18 @@ import jakarta.validation.Valid;
 import pe.edu.upeu.pracway.Pracway.entity.Plan;
 import pe.edu.upeu.pracway.Pracway.service.PlanService;
 
-
-
 @RestController
 @RequestMapping("/api/planes")
 public class PlanController {
+
 	@Autowired
 	private PlanService service;
-	
+
 	@GetMapping
-	public ResponseEntity<List<Plan>> readAll(){
+	public ResponseEntity<List<Plan>> readAll() {
 		try {
 			List<Plan> Planes = service.readAll();
-			if(Planes.isEmpty()) {
+			if (Planes.isEmpty()) {
 				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 			}
 			return new ResponseEntity<>(Planes, HttpStatus.OK);
@@ -41,10 +39,11 @@ public class PlanController {
 			// TODO: handle exception
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		
+
 	}
+
 	@PostMapping
-	public ResponseEntity<Plan> crearPlan(@Valid @RequestBody Plan pla){
+	public ResponseEntity<Plan> crearPlan(@Valid @RequestBody Plan pla) {
 		try {
 			service.create(pla);
 			return new ResponseEntity<>(HttpStatus.CREATED);
@@ -52,10 +51,11 @@ public class PlanController {
 			// TODO: handle exception
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		
+
 	}
+
 	@GetMapping("/{id}")
-	public ResponseEntity<Plan> getPlanId(@PathVariable("id") Long id){
+	public ResponseEntity<Plan> getPlanId(@PathVariable("id") Long id) {
 		try {
 			Plan p = service.read(id).get();
 			return new ResponseEntity<>(p, HttpStatus.CREATED);
@@ -65,10 +65,11 @@ public class PlanController {
 			// TODO: handle exception
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		
+
 	}
+
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Plan> delPlan(@PathVariable("id") Long id){
+	public ResponseEntity<Plan> delPlan(@PathVariable("id") Long id) {
 		try {
 			service.delete(id);
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -76,19 +77,20 @@ public class PlanController {
 			// TODO: handle exception
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		
-	}
-	@PutMapping("/{id}")
-	public ResponseEntity<?> updatePlan(@PathVariable("id") Long id, @Valid @RequestBody Plan pla){
 
-			Optional<Plan> p = service.read(id);
-			if(p.isEmpty()) {
-				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-			}else {
-				 service.update(pla);
-		            return new ResponseEntity<>(HttpStatus.OK);
-				
-			}		
-		
+	}
+
+	@PutMapping("/{id}")
+	public ResponseEntity<?> updatePlan(@PathVariable("id") Long id, @Valid @RequestBody Plan pla) {
+
+		Optional<Plan> p = service.read(id);
+		if (p.isEmpty()) {
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		} else {
+			service.update(pla);
+			return new ResponseEntity<>(HttpStatus.OK);
+
+		}
+
 	}
 }

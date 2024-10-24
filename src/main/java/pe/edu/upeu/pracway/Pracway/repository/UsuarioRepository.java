@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import pe.edu.upeu.pracway.Pracway.entity.Rol;
 import pe.edu.upeu.pracway.Pracway.entity.Usuario;
+
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
     

@@ -5,8 +5,6 @@ import java.util.Optional;
 
 import pe.edu.upeu.pracway.Pracway.entity.Carrera;
 
-
-
 public interface CarreraDao {
 	void create(Carrera c);
 	void update(Carrera c);

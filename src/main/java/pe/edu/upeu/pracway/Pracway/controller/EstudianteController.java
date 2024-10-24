@@ -19,70 +19,75 @@ import jakarta.validation.Valid;
 import pe.edu.upeu.pracway.Pracway.entity.Estudiante;
 import pe.edu.upeu.pracway.Pracway.service.EstudianteService;
 
-	@RestController
-	@RequestMapping("/api/estudiante")
-	public class EstudianteController {
-		@Autowired
-		private EstudianteService estudianteService;
-		
-		@GetMapping
-		public ResponseEntity<List<Estudiante>> readAll(){
-			try {
-				List<Estudiante> estudiante = estudianteService.readAll();
-				if(estudiante.isEmpty()) {
-					return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-				}
-				return new ResponseEntity<>(estudiante, HttpStatus.OK);
-			} catch (Exception e) {
-				// TODO: handle exception
-				return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-			}
-			
-		}
-		@PostMapping
-		public ResponseEntity<Estudiante> crear(@Valid @RequestBody Estudiante est){
-			try {
-				Estudiante e = estudianteService.create(est);
-				return new ResponseEntity<>(e, HttpStatus.CREATED);
-			} catch (Exception e) {
-				// TODO: handle exception
-				return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-			}
-			
-		}
-		@GetMapping("/{id}")
-		public ResponseEntity<Estudiante> getEstudianteId(@PathVariable("id") Long id){
+@RestController
+@RequestMapping("/api/estudiante")
+public class EstudianteController {
 
-			try {
-				Estudiante e = estudianteService.read(id).get();
-				return new ResponseEntity<>(e, HttpStatus.CREATED);
-			} catch (Exception e) {
-				// TODO: handle exception
-				return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-			}
-			
-		}
-		@DeleteMapping("/{id}")
-		public ResponseEntity<Estudiante> delEstudiante(@PathVariable("id") Long id){
-			try {
-				estudianteService.delete(id);
+	@Autowired
+	private EstudianteService estudianteService;
+
+	@GetMapping
+	public ResponseEntity<List<Estudiante>> readAll() {
+		try {
+			List<Estudiante> estudiante = estudianteService.readAll();
+			if (estudiante.isEmpty()) {
 				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-			} catch (Exception e) {
-				// TODO: handle exception
-				return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 			}
-			
+			return new ResponseEntity<>(estudiante, HttpStatus.OK);
+		} catch (Exception e) {
+			// TODO: handle exception
+			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		@PutMapping("/{id}")
-		public ResponseEntity<?> updateEstudiante(@PathVariable("id") Long id, @Valid @RequestBody Estudiante est){
 
-				Optional<Estudiante> e = estudianteService.read(id);
-				if(e.isEmpty()) {
-					return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-					
-				}else {
-					return new ResponseEntity<>(estudianteService.update(est), HttpStatus.OK);
-				}		
-			
-		}
 	}
+
+	@PostMapping
+	public ResponseEntity<Estudiante> crear(@Valid @RequestBody Estudiante est) {
+		try {
+			Estudiante e = estudianteService.create(est);
+			return new ResponseEntity<>(e, HttpStatus.CREATED);
+		} catch (Exception e) {
+			// TODO: handle exception
+			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+
+	}
+
+	@GetMapping("/{id}")
+	public ResponseEntity<Estudiante> getEstudianteId(@PathVariable("id") Long id) {
+
+		try {
+			Estudiante e = estudianteService.read(id).get();
+			return new ResponseEntity<>(e, HttpStatus.CREATED);
+		} catch (Exception e) {
+			// TODO: handle exception
+			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+
+	}
+
+	@DeleteMapping("/{id}")
+	public ResponseEntity<Estudiante> delEstudiante(@PathVariable("id") Long id) {
+		try {
+			estudianteService.delete(id);
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		} catch (Exception e) {
+			// TODO: handle exception
+			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+
+	}
+
+	@PutMapping("/{id}")
+	public ResponseEntity<?> updateEstudiante(@PathVariable("id") Long id, @Valid @RequestBody Estudiante est) {
+
+		Optional<Estudiante> e = estudianteService.read(id);
+		if (e.isEmpty()) {
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+
+		} else {
+			return new ResponseEntity<>(estudianteService.update(est), HttpStatus.OK);
+		}
+
+	}
+}

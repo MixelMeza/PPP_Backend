@@ -1,6 +1,5 @@
 package pe.edu.upeu.pracway.Pracway.controller;
 
-
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -21,18 +20,18 @@ import jakarta.validation.Valid;
 import pe.edu.upeu.pracway.Pracway.entity.Requisito;
 import pe.edu.upeu.pracway.Pracway.service.RequisitoService;
 
-
 @RestController
 @RequestMapping("/api/requisitos")
 public class RequisitoController {
+
 	@Autowired
 	private RequisitoService service;
-	
+
 	@GetMapping
-	public ResponseEntity<List<Requisito>> readAll(){
+	public ResponseEntity<List<Requisito>> readAll() {
 		try {
 			List<Requisito> Requisitos = service.readAll();
-			if(Requisitos.isEmpty()) {
+			if (Requisitos.isEmpty()) {
 				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 			}
 			return new ResponseEntity<>(Requisitos, HttpStatus.OK);
@@ -40,10 +39,11 @@ public class RequisitoController {
 			// TODO: handle exception
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		
+
 	}
+
 	@PostMapping
-	public ResponseEntity<Requisito> crearRequisito(@Valid @RequestBody Requisito req){
+	public ResponseEntity<Requisito> crearRequisito(@Valid @RequestBody Requisito req) {
 		try {
 			service.create(req);
 			return new ResponseEntity<>(HttpStatus.CREATED);
@@ -51,10 +51,11 @@ public class RequisitoController {
 			// TODO: handle exception
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		
+
 	}
+
 	@GetMapping("/{id}")
-	public ResponseEntity<Requisito> getRequisitoId(@PathVariable("id") Long id){
+	public ResponseEntity<Requisito> getRequisitoId(@PathVariable("id") Long id) {
 		try {
 			Requisito r = service.read(id).get();
 			return new ResponseEntity<>(r, HttpStatus.CREATED);
@@ -64,10 +65,11 @@ public class RequisitoController {
 			// TODO: handle exception
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		
+
 	}
+
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Requisito> delRequisito(@PathVariable("id") Long id){
+	public ResponseEntity<Requisito> delRequisito(@PathVariable("id") Long id) {
 		try {
 			service.delete(id);
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -75,19 +77,19 @@ public class RequisitoController {
 			// TODO: handle exception
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		
-	}
-	@PutMapping("/{id}")
-	public ResponseEntity<?> updateRequisito(@PathVariable("id") Long id, @Valid @RequestBody Requisito req){
 
-			Optional<Requisito> r = service.read(id);
-			if(r.isEmpty()) {
-				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-			}else {
-				service.update(req);
-				return new ResponseEntity<>(HttpStatus.OK);
-			}		
-		
+	}
+
+	@PutMapping("/{id}")
+	public ResponseEntity<?> updateRequisito(@PathVariable("id") Long id, @Valid @RequestBody Requisito req) {
+
+		Optional<Requisito> r = service.read(id);
+		if (r.isEmpty()) {
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		} else {
+			service.update(req);
+			return new ResponseEntity<>(HttpStatus.OK);
+		}
+
 	}
 }
-

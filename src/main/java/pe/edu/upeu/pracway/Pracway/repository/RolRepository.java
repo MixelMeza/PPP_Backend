@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.query.Procedure;
 import org.springframework.stereotype.Repository;
 
 import pe.edu.upeu.pracway.Pracway.entity.Rol;
+
 @Repository
 public interface RolRepository extends JpaRepository<Rol, Long>{
 	
@@ -16,4 +17,5 @@ public interface RolRepository extends JpaRepository<Rol, Long>{
 
     @Procedure(procedureName = "sp_eliminar_rol")
     void eliminarRol(Long r_id);
+    
 }

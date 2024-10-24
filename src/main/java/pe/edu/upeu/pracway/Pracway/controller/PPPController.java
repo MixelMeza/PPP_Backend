@@ -1,6 +1,5 @@
 package pe.edu.upeu.pracway.Pracway.controller;
 
-
 import java.util.List;
 import java.util.Optional;
 
@@ -20,19 +19,18 @@ import jakarta.validation.Valid;
 import pe.edu.upeu.pracway.Pracway.entity.PPP;
 import pe.edu.upeu.pracway.Pracway.service.PPPService;
 
-
 @RestController
 @RequestMapping("/api/ppp")
-public class PPPController{
-	
-  
+public class PPPController {
+
 	@Autowired
 	private PPPService pppService;
+
 	@GetMapping
-	public ResponseEntity<List<PPP>> readAll(){
+	public ResponseEntity<List<PPP>> readAll() {
 		try {
 			List<PPP> ppp = pppService.readAll();
-			if(ppp.isEmpty()) {
+			if (ppp.isEmpty()) {
 				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 			}
 			return new ResponseEntity<>(ppp, HttpStatus.OK);
@@ -40,8 +38,9 @@ public class PPPController{
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
+
 	@PostMapping
-	public ResponseEntity<PPP> crear(@Valid @RequestBody PPP ppp){
+	public ResponseEntity<PPP> crear(@Valid @RequestBody PPP ppp) {
 		try {
 			PPP p = pppService.create(ppp);
 			return new ResponseEntity<>(p, HttpStatus.CREATED);
@@ -49,8 +48,9 @@ public class PPPController{
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
+
 	@GetMapping("/{id}")
-	public ResponseEntity<PPP> getPPPId(@PathVariable("id") Long id){
+	public ResponseEntity<PPP> getPPPId(@PathVariable("id") Long id) {
 		try {
 			PPP p = pppService.read(id).get();
 			return new ResponseEntity<>(p, HttpStatus.CREATED);
@@ -58,8 +58,9 @@ public class PPPController{
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
+
 	@DeleteMapping("/{id}")
-	public ResponseEntity<PPP> delPPP(@PathVariable("id") Long id){
+	public ResponseEntity<PPP> delPPP(@PathVariable("id") Long id) {
 		try {
 			pppService.delete(id);
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -67,17 +68,17 @@ public class PPPController{
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
+
 	@PutMapping("/{id}")
-	public ResponseEntity<?> updatePPP(@PathVariable("id") Long id, @Valid @RequestBody PPP ppp){
+	public ResponseEntity<?> updatePPP(@PathVariable("id") Long id, @Valid @RequestBody PPP ppp) {
 
 		Optional<PPP> p = pppService.read(id);
-			if (p.isEmpty()) {
-				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-				
+		if (p.isEmpty()) {
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 
-			} else {
-				return new ResponseEntity<>(pppService.update(ppp), HttpStatus.OK);
-			}
-		
+		} else {
+			return new ResponseEntity<>(pppService.update(ppp), HttpStatus.OK);
+		}
+
 	}
 }

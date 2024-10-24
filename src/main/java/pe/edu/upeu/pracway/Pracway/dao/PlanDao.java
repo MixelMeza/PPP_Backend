@@ -5,8 +5,6 @@ import java.util.Optional;
 
 import pe.edu.upeu.pracway.Pracway.entity.Plan;
 
-
-
 public interface PlanDao {
 	void create(Plan p);
 	void update(Plan p);

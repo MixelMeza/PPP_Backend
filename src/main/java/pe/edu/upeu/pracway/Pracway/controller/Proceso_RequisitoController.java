@@ -23,63 +23,64 @@ import pe.edu.upeu.pracway.Pracway.service.Proceso_RequisitoService;
 @RequestMapping("/api/proceso_requisito")
 public class Proceso_RequisitoController {
 
-    @Autowired
-    private Proceso_RequisitoService procesoRequisitoService;
+	@Autowired
+	private Proceso_RequisitoService procesoRequisitoService;
 
-    @GetMapping
-    public ResponseEntity<List<Proceso_Requisito>> readAll() {
-        try {
-            List<Proceso_Requisito> procesos = procesoRequisitoService.readAll();
-            if (procesos.isEmpty()) {
-                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-            }
-            return new ResponseEntity<>(procesos, HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
+	@GetMapping
+	public ResponseEntity<List<Proceso_Requisito>> readAll() {
+		try {
+			List<Proceso_Requisito> procesos = procesoRequisitoService.readAll();
+			if (procesos.isEmpty()) {
+				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+			}
+			return new ResponseEntity<>(procesos, HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
 
-    @PostMapping
-    public ResponseEntity<Proceso_Requisito> crear(@Valid @RequestBody Proceso_Requisito proceso) {
-        try {
-            Proceso_Requisito p = procesoRequisitoService.create(proceso);
-            return new ResponseEntity<>(p, HttpStatus.CREATED);
-        } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
+	@PostMapping
+	public ResponseEntity<Proceso_Requisito> crear(@Valid @RequestBody Proceso_Requisito proceso) {
+		try {
+			Proceso_Requisito p = procesoRequisitoService.create(proceso);
+			return new ResponseEntity<>(p, HttpStatus.CREATED);
+		} catch (Exception e) {
+			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Proceso_Requisito> getProcesoRequisitoById(@PathVariable("id") Long id) {
-        try {
-            Optional<Proceso_Requisito> proceso = procesoRequisitoService.read(id);
-            if (proceso.isPresent()) {
-                return new ResponseEntity<>(proceso.get(), HttpStatus.OK);
-            } else {
-                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-            }
-        } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
+	@GetMapping("/{id}")
+	public ResponseEntity<Proceso_Requisito> getProcesoRequisitoById(@PathVariable("id") Long id) {
+		try {
+			Optional<Proceso_Requisito> proceso = procesoRequisitoService.read(id);
+			if (proceso.isPresent()) {
+				return new ResponseEntity<>(proceso.get(), HttpStatus.OK);
+			} else {
+				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			}
+		} catch (Exception e) {
+			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteProcesoRequisito(@PathVariable("id") Long id) {
-        try {
-            procesoRequisitoService.delete(id);
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
+	@DeleteMapping("/{id}")
+	public ResponseEntity<?> deleteProcesoRequisito(@PathVariable("id") Long id) {
+		try {
+			procesoRequisitoService.delete(id);
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		} catch (Exception e) {
+			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
 
-    @PutMapping("/{id}")
-    public ResponseEntity<?> updateProcesoRequisito(@PathVariable("id") Long id, @Valid @RequestBody Proceso_Requisito proceso) {
-        Optional<Proceso_Requisito> p = procesoRequisitoService.read(id);
-        if (p.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        } else {
-            return new ResponseEntity<>(procesoRequisitoService.update(proceso), HttpStatus.OK);
-        }
-    }
+	@PutMapping("/{id}")
+	public ResponseEntity<?> updateProcesoRequisito(@PathVariable("id") Long id,
+			@Valid @RequestBody Proceso_Requisito proceso) {
+		Optional<Proceso_Requisito> p = procesoRequisitoService.read(id);
+		if (p.isEmpty()) {
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		} else {
+			return new ResponseEntity<>(procesoRequisitoService.update(proceso), HttpStatus.OK);
+		}
+	}
 }

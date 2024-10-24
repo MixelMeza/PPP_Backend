@@ -4,11 +4,13 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import pe.edu.upeu.pracway.Pracway.dao.Detalle_DocDao;
 import pe.edu.upeu.pracway.Pracway.entity.Detalle_Doc;
 import pe.edu.upeu.pracway.Pracway.service.Detalle_DocService;
 
+@Service
 public class Detalle_DocServiceImpl implements Detalle_DocService {
 
 	@Autowired

@@ -1,4 +1,5 @@
 package pe.edu.upeu.pracway.Pracway.controller;
+
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -17,19 +18,18 @@ import jakarta.validation.Valid;
 import pe.edu.upeu.pracway.Pracway.entity.Tipo;
 import pe.edu.upeu.pracway.Pracway.service.TipoService;
 
-
-
 @RestController
 @RequestMapping("/api/tipos")
 public class TipoController {
+
 	@Autowired
 	private TipoService service;
-	
+
 	@GetMapping
-	public ResponseEntity<List<Tipo>> readAll(){
+	public ResponseEntity<List<Tipo>> readAll() {
 		try {
 			List<Tipo> Tipos = service.readAll();
-			if(Tipos.isEmpty()) {
+			if (Tipos.isEmpty()) {
 				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 			}
 			return new ResponseEntity<>(Tipos, HttpStatus.OK);
@@ -37,10 +37,11 @@ public class TipoController {
 			// TODO: handle exception
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		
+
 	}
+
 	@PostMapping
-	public ResponseEntity<Tipo> crearTipo(@Valid @RequestBody Tipo tip){
+	public ResponseEntity<Tipo> crearTipo(@Valid @RequestBody Tipo tip) {
 		try {
 			service.create(tip);
 			return new ResponseEntity<>(HttpStatus.CREATED);
@@ -48,10 +49,11 @@ public class TipoController {
 			// TODO: handle exception
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		
+
 	}
+
 	@GetMapping("/{id}")
-	public ResponseEntity<Tipo> getTipoId(@PathVariable("id") Long id){
+	public ResponseEntity<Tipo> getTipoId(@PathVariable("id") Long id) {
 		try {
 			Tipo t = service.read(id).get();
 			return new ResponseEntity<>(t, HttpStatus.CREATED);
@@ -61,10 +63,11 @@ public class TipoController {
 			// TODO: handle exception
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		
+
 	}
+
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Tipo> delTipo(@PathVariable("id") Long id){
+	public ResponseEntity<Tipo> delTipo(@PathVariable("id") Long id) {
 		try {
 			service.delete(id);
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -72,19 +75,20 @@ public class TipoController {
 			// TODO: handle exception
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		
-	}
-	@PutMapping("/{id}")
-	public ResponseEntity<?> updateTipo(@PathVariable("id") Long id, @Valid @RequestBody Tipo tip){
 
-			Optional<Tipo> t = service.read(id);
-			if(t.isEmpty()) {
-				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-			}else {
-				 service.update(tip);
-		            return new ResponseEntity<>(HttpStatus.OK);
-				
-			}		
-		
+	}
+
+	@PutMapping("/{id}")
+	public ResponseEntity<?> updateTipo(@PathVariable("id") Long id, @Valid @RequestBody Tipo tip) {
+
+		Optional<Tipo> t = service.read(id);
+		if (t.isEmpty()) {
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		} else {
+			service.update(tip);
+			return new ResponseEntity<>(HttpStatus.OK);
+
+		}
+
 	}
 }

@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 
 import pe.edu.upeu.pracway.Pracway.entity.Carrera;
 
-
 @Repository
 public interface CarreraRepository extends JpaRepository<Carrera, Long> {
 	
@@ -18,4 +17,5 @@ public interface CarreraRepository extends JpaRepository<Carrera, Long> {
 
     @Procedure(procedureName = "sp_eliminar_carrera")
     void eliminarCarrera(Long c_id);
+    
 }

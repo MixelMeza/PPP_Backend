@@ -50,5 +50,5 @@ public class Empresa {
 	
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy = "empresa")
 	@JsonIgnore
-	private Set<Solicitud_PPP> solicitudppp;
+	private Set<Solicitud_PPP> solicitud_ppp;
 }

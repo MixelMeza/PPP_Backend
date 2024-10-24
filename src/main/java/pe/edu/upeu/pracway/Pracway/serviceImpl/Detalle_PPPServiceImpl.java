@@ -4,14 +4,18 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import pe.edu.upeu.pracway.Pracway.dao.Detalle_PPPDao;
 import pe.edu.upeu.pracway.Pracway.entity.Detalle_PPP;
 import pe.edu.upeu.pracway.Pracway.service.Detalle_PPPService;
 
-public class Detalle_PPPServiceImpl implements Detalle_PPPService{
-@Autowired
-private Detalle_PPPDao detalle_PPPDao;
+@Service
+public class Detalle_PPPServiceImpl implements Detalle_PPPService {
+
+	@Autowired
+	private Detalle_PPPDao detalle_PPPDao;
+
 	@Override
 	public Detalle_PPP create(Detalle_PPP d) {
 		// TODO Auto-generated method stub
@@ -28,7 +32,7 @@ private Detalle_PPPDao detalle_PPPDao;
 	public void delete(Long id) {
 		// TODO Auto-generated method stub
 		detalle_PPPDao.delete(id);
-		
+
 	}
 
 	@Override

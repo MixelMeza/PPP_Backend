@@ -10,14 +10,12 @@ import pe.edu.upeu.pracway.Pracway.dao.PersonaDao;
 import pe.edu.upeu.pracway.Pracway.entity.Persona;
 import pe.edu.upeu.pracway.Pracway.service.PersonaService;
 
-
-
 @Service
-public class PersonaServiceImpl implements PersonaService{
-	
+public class PersonaServiceImpl implements PersonaService {
+
 	@Autowired
 	private PersonaDao dao;
-	
+
 	@Override
 	public void create(Persona p) {
 		// TODO Auto-generated method stub

@@ -10,18 +10,17 @@ import pe.edu.upeu.pracway.Pracway.dao.LineaDao;
 import pe.edu.upeu.pracway.Pracway.entity.Linea;
 import pe.edu.upeu.pracway.Pracway.service.LineaService;
 
-
 @Service
 public class LineaServiceImpl implements LineaService {
 
 	@Autowired
 	private LineaDao dao;
-	
+
 	@Override
 	public void create(Linea l) {
 		// TODO Auto-generated method stub
 		dao.create(l);
-		
+
 	}
 
 	@Override
