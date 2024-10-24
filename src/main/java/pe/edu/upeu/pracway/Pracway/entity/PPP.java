@@ -65,7 +65,7 @@ public class PPP {
 	
 	@OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "solicitudppp_id", referencedColumnName = "id")
-    private SolicitudPPP solicitud_ppp;
+    private Solicitud_PPP solicitud_ppp;
 	
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy = "ppp")
 	@JsonIgnore

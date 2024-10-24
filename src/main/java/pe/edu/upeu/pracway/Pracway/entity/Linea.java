@@ -45,6 +45,6 @@ public class Linea {
 	private Set<Supervisor_Academico> supervisor_academico;
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy = "linea")
 	@JsonIgnore
-	private Set<SolicitudPPP> solicitudppp;
+	private Set<Solicitud_PPP> solicitudppp;
 }
 
