@@ -44,7 +44,7 @@ public class PlanController {
 		
 	}
 	@PostMapping
-	public ResponseEntity<Plan> crearProceso(@Valid @RequestBody Plan pla){
+	public ResponseEntity<Plan> crearPlan(@Valid @RequestBody Plan pla){
 		try {
 			service.create(pla);
 			return new ResponseEntity<>(HttpStatus.CREATED);

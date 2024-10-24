@@ -48,7 +48,21 @@ public class Persona {
 	@OneToOne(mappedBy = "persona")
     private Usuario usuario;
 	
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy = "persona")
+	@JsonIgnore
+	private Set<Supervisor_Empresarial> supervisor_empresarial;
 	
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy = "persona")
+	@JsonIgnore
+	private Set<Supervisor_Academico> supervisor_academico;
+	
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy = "persona")
+	@JsonIgnore
+	private Set<Representante> representante;
+	
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy = "persona")
+	@JsonIgnore
+	private Set<Estudiante> estudiante;
 	
 	
 	

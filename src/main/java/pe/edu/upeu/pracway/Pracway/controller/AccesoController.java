@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.validation.Valid;
@@ -88,4 +89,21 @@ public class AccesoController {
 			}		
 		
 	}
+	
+	 @GetMapping("/rol/{rol}")
+	    public ResponseEntity<List<Acceso>> getAccesosByRol(@PathVariable String rol) {
+	        List<Acceso> accesos = accesoService.findByRolNombre(rol);
+	        if (accesos != null && !accesos.isEmpty()) {
+	            return ResponseEntity.ok(accesos);
+	        } else {
+	            return ResponseEntity.notFound().build();
+	        }
+	    }
+
+	 
+	    @GetMapping("/verificar-url")
+	    public ResponseEntity<Boolean> checkUserAccessToUrl(@RequestParam String username, @RequestParam String url) {
+	        boolean hasAccess = accesoService.userHasAccessToUrl(username, url);
+	        return ResponseEntity.ok(hasAccess);
+	    }
 }
