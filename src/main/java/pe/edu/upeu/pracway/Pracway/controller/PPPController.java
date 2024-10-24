@@ -2,7 +2,6 @@ package pe.edu.upeu.pracway.Pracway.controller;
 
 
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,77 +17,67 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.validation.Valid;
-import pe.edu.upeu.pracway.Pracway.entity.Plan;
-import pe.edu.upeu.pracway.Pracway.service.PlanService;
-
+import pe.edu.upeu.pracway.Pracway.entity.PPP;
+import pe.edu.upeu.pracway.Pracway.service.PPPService;
 
 
 @RestController
-@RequestMapping("/api/planes")
-public class PlanController {
-	@Autowired
-	private PlanService service;
+@RequestMapping("/api/ppp")
+public class PPPController{
 	
+  
+	@Autowired
+	private PPPService pppService;
 	@GetMapping
-	public ResponseEntity<List<Plan>> readAll(){
+	public ResponseEntity<List<PPP>> readAll(){
 		try {
-			List<Plan> Planes = service.readAll();
-			if(Planes.isEmpty()) {
+			List<PPP> ppp = pppService.readAll();
+			if(ppp.isEmpty()) {
 				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 			}
-			return new ResponseEntity<>(Planes, HttpStatus.OK);
+			return new ResponseEntity<>(ppp, HttpStatus.OK);
 		} catch (Exception e) {
-			// TODO: handle exception
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		
 	}
 	@PostMapping
-	public ResponseEntity<Plan> crearPlan(@Valid @RequestBody Plan pla){
+	public ResponseEntity<PPP> crear(@Valid @RequestBody PPP ppp){
 		try {
-			service.create(pla);
-			return new ResponseEntity<>(HttpStatus.CREATED);
+			PPP p = pppService.create(ppp);
+			return new ResponseEntity<>(p, HttpStatus.CREATED);
 		} catch (Exception e) {
-			// TODO: handle exception
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		
 	}
 	@GetMapping("/{id}")
-	public ResponseEntity<Plan> getPlanId(@PathVariable("id") Long id){
+	public ResponseEntity<PPP> getPPPId(@PathVariable("id") Long id){
 		try {
-			Plan p = service.read(id).get();
+			PPP p = pppService.read(id).get();
 			return new ResponseEntity<>(p, HttpStatus.CREATED);
-		} catch (NoSuchElementException e) {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		} catch (Exception e) {
-			// TODO: handle exception
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		
 	}
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Plan> delPlan(@PathVariable("id") Long id){
+	public ResponseEntity<PPP> delPPP(@PathVariable("id") Long id){
 		try {
-			service.delete(id);
+			pppService.delete(id);
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		} catch (Exception e) {
-			// TODO: handle exception
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		
 	}
 	@PutMapping("/{id}")
-	public ResponseEntity<?> updatePlan(@PathVariable("id") Long id, @Valid @RequestBody Plan pla){
+	public ResponseEntity<?> updatePPP(@PathVariable("id") Long id, @Valid @RequestBody PPP ppp){
 
-			Optional<Plan> p = service.read(id);
-			if(p.isEmpty()) {
+		Optional<PPP> p = pppService.read(id);
+			if (p.isEmpty()) {
 				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-			}else {
-				 service.update(pla);
-		            return new ResponseEntity<>(HttpStatus.OK);
 				
-			}		
+
+			} else {
+				return new ResponseEntity<>(pppService.update(ppp), HttpStatus.OK);
+			}
 		
 	}
 }

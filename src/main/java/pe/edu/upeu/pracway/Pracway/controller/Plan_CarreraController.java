@@ -1,9 +1,7 @@
 package pe.edu.upeu.pracway.Pracway.controller;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -56,8 +54,6 @@ public class Plan_CarreraController {
 		try {
 			Plan_Carrera p = plan_carreraService.read(id).get();
 			return new ResponseEntity<>(p, HttpStatus.CREATED);
-		} catch (NoSuchElementException e) {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		} catch (Exception e) {
 			// TODO: handle exception
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);

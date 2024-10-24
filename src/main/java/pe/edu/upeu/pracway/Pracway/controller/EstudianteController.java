@@ -28,11 +28,11 @@ import pe.edu.upeu.pracway.Pracway.service.EstudianteService;
 		@GetMapping
 		public ResponseEntity<List<Estudiante>> readAll(){
 			try {
-				List<Estudiante> Estudiante = estudianteService.readAll();
-				if(Estudiante.isEmpty()) {
+				List<Estudiante> estudiante = estudianteService.readAll();
+				if(estudiante.isEmpty()) {
 					return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 				}
-				return new ResponseEntity<>(Estudiante, HttpStatus.OK);
+				return new ResponseEntity<>(estudiante, HttpStatus.OK);
 			} catch (Exception e) {
 				// TODO: handle exception
 				return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -51,7 +51,7 @@ import pe.edu.upeu.pracway.Pracway.service.EstudianteService;
 			
 		}
 		@GetMapping("/{id}")
-		public ResponseEntity<Estudiante> getAlmacenId(@PathVariable("id") Long id){
+		public ResponseEntity<Estudiante> getEstudianteId(@PathVariable("id") Long id){
 			try {
 				Estudiante e = estudianteService.read(id).get();
 				return new ResponseEntity<>(e, HttpStatus.CREATED);
@@ -65,7 +65,7 @@ import pe.edu.upeu.pracway.Pracway.service.EstudianteService;
 		public ResponseEntity<Estudiante> delEstudiante(@PathVariable("id") Long id){
 			try {
 				estudianteService.delete(id);
-				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+				return new ResponseEntity<>(HttpStatus.CREATED);
 			} catch (Exception e) {
 				// TODO: handle exception
 				return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);

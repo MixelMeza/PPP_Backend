@@ -50,7 +50,7 @@ import pe.edu.upeu.pracway.Pracway.service.Supervisor_EmpresarialService;
 			
 		}
 		@GetMapping("/{id}")
-		public ResponseEntity<Supervisor_Empresarial> getAlmacenId(@PathVariable("id") Long id){
+		public ResponseEntity<Supervisor_Empresarial> getSupervisor_EmpresarialId(@PathVariable("id") Long id){
 			try {
 				Supervisor_Empresarial s = supervisor_empresarialService.read(id).get();
 				return new ResponseEntity<>(s, HttpStatus.CREATED);
