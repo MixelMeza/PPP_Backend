@@ -1,4 +1,8 @@
 package pe.edu.upeu.pracway.Pracway.entity;
+
+import java.util.Set;
+
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
@@ -29,7 +33,13 @@ public class Tipo {
 	private Long id;
 	private String nombre;
 	private char estado;
-	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy = "tipo")
+
+	
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy = "tipo")
 	@JsonIgnore
-	private Proceso_Requisito proceso_requisito;
+	private Set<Evaluacion> evaluacion;
+	
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy = "tipo")
+	@JsonIgnore
+	private Set<DetalleEvaluacion> detalle_evaluacion;
 }

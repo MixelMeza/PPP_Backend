@@ -3,13 +3,16 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import pe.edu.upeu.pracway.Pracway.dao.Plan_CarreraDao;
 import pe.edu.upeu.pracway.Pracway.entity.Plan_Carrera;
 import pe.edu.upeu.pracway.Pracway.repository.Plan_CarreraRepository;
+
+@Component
 public class Plan_CarreraDaoImpl implements Plan_CarreraDao{
-@Autowired
-private Plan_CarreraRepository plan_carreraRepository;
+	@Autowired
+	private Plan_CarreraRepository plan_carreraRepository;
 	@Override
 	public Plan_Carrera create(Plan_Carrera p) {
 		// TODO Auto-generated method stub

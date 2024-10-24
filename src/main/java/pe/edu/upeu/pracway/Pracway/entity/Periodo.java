@@ -46,5 +46,4 @@ public class Periodo {
     @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy = "periodo")
 	@JsonIgnore
 	private Set<Dia> dia;	
-  
 }

@@ -6,6 +6,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -27,4 +29,13 @@ public class Evaluacion {
 	private double nota;
 	private String comentario;
 	private char estado;
+	
+	
+	@ManyToOne
+	@JoinColumn(name = "tipo_id", nullable = false)
+	private Tipo tipo;
+	
+	@ManyToOne
+	@JoinColumn(name = "ppp_id", nullable = false)
+	private PPP ppp;
 }
